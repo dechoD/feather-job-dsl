@@ -11,3 +11,10 @@ new ClientTestJob(
   description: "Runs client side tests for Feather projects and checks code coverage and jshint",
   featherBranch: "*/master",
   emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
+
+new ClientWidgetsTestJob(
+  name: "Codebase_FeatherWidgetsClientTest",
+  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
+  featherBranch: "*/CodeBaseIntegration",
+  emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
+

@@ -67,6 +67,18 @@ grunt''')
     return this
   }
 
+  JobBuilder RunWidgetClientTests() {
+    job.with {
+      steps {
+        powerShell('''cd feather-widgets
+npm install
+grunt''')
+      }
+    }
+
+    return this
+  }
+
   JobBuilder AddNodeJsFolderToPath(String folderPath) {
     job.with {
       wrappers {
@@ -88,6 +100,35 @@ grunt''')
           }
           extensions {
             wipeOutWorkspace()
+          }
+        }
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder SetWidgetClientTestsGitSources(String branchToUse) {
+    job.with {
+      multiscm {
+        git {
+          remote {
+            github('Sitefinity/feather')
+            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('Feather')
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/feather-widgets')
+            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('feather-widgets')
           }
         }
       }
