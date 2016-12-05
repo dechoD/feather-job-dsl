@@ -60,7 +60,7 @@ class JobBuilder {
     job.with {
       steps {
         powerShell('''npm install
-grunt''')
+        grunt''')
       }
     }
 
@@ -218,6 +218,24 @@ grunt''')
               'buildTime'('0')
               'failOnError'('false')
               'keepLongStdio'('true')
+            }
+          }
+        }
+
+        return this
+      }
+
+      JobBuilder PublishCoberturaCoverageReport(String filePath) {
+        job.with {
+          publishers {
+            cobertura(filePath) {
+              failNoReports(true)
+              sourceEncoding('ASCII')
+
+              // the following targets are added by default to check the method, line and conditional level coverage
+              methodTarget(80, 0, 0)
+              lineTarget(80, 0, 0)
+              conditionalTarget(70, 0, 0)
             }
           }
         }

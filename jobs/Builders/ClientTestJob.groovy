@@ -27,6 +27,7 @@ class ClientTestJob {
         .InjectEnvironmentalVariable('Path', '$Path;C:\\Users\\jenkinsci\\AppData\\Roaming\\npm')
         .AddNodeJsFolderToPath('nodejs')
         .RunClientTests()
+        .PublishCoberturaCoverageReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/coverage/cobertura/cobertura-coverage.xml')
         .GetJob()
     }
   }
