@@ -19,6 +19,7 @@ class FeatherUnitTestBase {
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)
+      .RestrictWhereThisProjectCanBeRun('UnitTests')
       .PublishMSTestReport('tests.trx')
       .PublishEmmaCoverageReport('data.xml')
       .GetJob()

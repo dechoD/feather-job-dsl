@@ -89,13 +89,13 @@ grunt''')
     return this
   }
 
-  JobBuilder SetClientTestsGitSource(String branchToUse) {
+  JobBuilder SetClientTestsGitSource(String branchToUse, String repository = 'Sitefinity/feather') {
     job.with {
       scm {
         git {
           branch(branchToUse)
           remote {
-            github('Sitefinity/feather', 'https')
+            github(repository, 'https')
             credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
           }
           extensions {
