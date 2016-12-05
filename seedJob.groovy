@@ -42,4 +42,10 @@ new FeatherUnitTestJob(
   featherBranch: "*/DBP",
   emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
 
+new FeatherWidgetsUnitTestJob(
+  name: "Codebase_FeatherWidgetsUnitTests",
+  description: "The Frontend Widgets for the Sitefinity Feather project.",
+  featherBranch: "*/DBP",
+  emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
+
 

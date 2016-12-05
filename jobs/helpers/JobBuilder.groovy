@@ -182,7 +182,7 @@ grunt''')
       configure {
         it / 'builders' / 'org.jenkinsci.plugins.MsTestBuilder'(plugin: 'mstestrunner@1.1.2') {
           'msTestName'('MsTest')
-          'testFiles'('Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll')
+          'testFiles'(filePath)
           'resultFile'('tests.trx')
           'cmdLineArgs'('/testsettings:Tests\\TestSettings.testsettings')
           'continueOnFail'('false')
@@ -202,6 +202,16 @@ grunt''')
           'failOnError'('false')
           'keepLongStdio'('true')
         }
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder BuildOtherProject(String project, String treshold) {
+    job.with {
+      publishers {
+        downstream(project, treshold)
       }
     }
 
