@@ -2,7 +2,6 @@ package jobs.builders
 
 import jobs.helpers.BaseJobBuilder
 import jobs.helpers.JobBuilder
-import jobs.helpers.ClientTestBase
 import jobs.helpers.FeatherUnitTestBase
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
