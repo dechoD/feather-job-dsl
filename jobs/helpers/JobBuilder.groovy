@@ -257,10 +257,31 @@ grunt''')
         job.with {
           configure {
             it / 'publishers' / 'hudson.plugins.mstest.MSTestPublisher'(plugin: 'mstest@0.19') {
-              'testResultsFile'('TestResults\\*.trx')
+              'testResultsFile'(filePath)
               'buildTime'('0')
               'failOnError'('false')
               'keepLongStdio'('true')
+            }
+          }
+        }
+
+        return this
+      }
+
+      JobBuilder PublishEmmaCoverageReport(String filePath) {
+        job.with {
+          publishers {
+            emma(filePath) {
+              minClass(50)
+              maxClass(100)
+              minMethod(50)
+              maxMethod(100)
+              minBlock(50)
+              maxBlock(80)
+              minLine(50)
+              maxLine(80)
+              minCondition(0)
+              maxCondition(0)
             }
           }
         }
