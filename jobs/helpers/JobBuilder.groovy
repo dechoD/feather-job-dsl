@@ -77,7 +77,7 @@ grunt''')
     return this
   }
 
-  JobBuilder SetGitSourceCodeManagement(String branchToUse) {
+  JobBuilder SetClientTestsGitSource(String branchToUse) {
     job.with {
       scm {
         git {
