@@ -23,7 +23,7 @@ class ClientTestJob {
 
       jobBuilder
         .RestrictWhereThisProjectCanBeRun("ClientTests")
-        .SetGitSourceCodeManagement(this.description)
+        .SetGitSourceCodeManagement(this.featherBranch)
         .TriggerBuildOnGitPush()
         .InjectEnvironmentalVariable('Path', '$Path;C:\\Users\\jenkinsci\\AppData\\Roaming\\npm')
         .AddNodeJsFolderToPath('nodejs')
