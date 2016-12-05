@@ -2,6 +2,7 @@ package jobs.builders
 
 import jobs.helpers.BaseJobBuilder
 import jobs.helpers.JobBuilder
+import jobs.helpers.ClientTestBase
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.*
@@ -13,7 +14,7 @@ class ClientTestJob {
   String featherBranch
 
   Job build(DslFactory factory) {
-    Job baseJob = new BaseJobBuilder(
+    Job baseJob = new ClientTestBase(
       name: this.name,
       description: this.description,
       emails: this.emails
@@ -22,14 +23,8 @@ class ClientTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .RestrictWhereThisProjectCanBeRun("ClientTests")
         .SetClientTestsGitSource(this.featherBranch)
-        .TriggerBuildOnGitPush()
-        .InjectEnvironmentalVariable('Path', '$Path;C:\\Users\\jenkinsci\\AppData\\Roaming\\npm')
-        .AddNodeJsFolderToPath('nodejs')
         .RunClientTests()
-        .PublishCoberturaCoverageReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/coverage/cobertura/cobertura-coverage.xml')
-        .PublishJunitTestReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/TestResults/*.xml')
         .GetJob()
     }
   }
