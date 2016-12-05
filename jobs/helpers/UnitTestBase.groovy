@@ -6,7 +6,7 @@ import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.*
 
-class FeatherUnitTestBase {
+class UnitTestBase {
   String name
   String description
   String emails
@@ -20,8 +20,8 @@ class FeatherUnitTestBase {
 
       def jobBuilder = new JobBuilder(baseJob)
       .RestrictWhereThisProjectCanBeRun('UnitTests')
+      .TriggerBuildOnGitPush()
       .PublishMSTestReport('tests.trx')
-      .PublishEmmaCoverageReport('data.xml')
       .GetJob()
     }
   }

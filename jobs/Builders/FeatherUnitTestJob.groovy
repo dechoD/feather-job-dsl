@@ -2,7 +2,7 @@ package jobs.builders
 
 import jobs.helpers.BaseJobBuilder
 import jobs.helpers.JobBuilder
-import jobs.helpers.FeatherUnitTestBase
+import jobs.helpers.UnitTestBase
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.*
@@ -14,7 +14,7 @@ class FeatherUnitTestJob {
   String featherBranch
 
   Job build(DslFactory factory) {
-    Job baseJob = new FeatherUnitTestBase(
+    Job baseJob = new UnitTestBase(
       name: this.name,
       description: this.description,
       emails: this.emails
@@ -23,6 +23,8 @@ class FeatherUnitTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
+        .SetClientTestsGitSource('*/CodeBaseIntegration')
+        .PublishEmmaCoverageReport('data.xml')
         .GetJob()
     }
   }
