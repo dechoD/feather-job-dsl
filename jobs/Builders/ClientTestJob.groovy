@@ -1,6 +1,7 @@
 package jobs.builders
 
 import jobs.helpers.BaseJobBuilder
+import jobs.helpers.JobBuilder
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.*
