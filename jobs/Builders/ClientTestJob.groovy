@@ -1,4 +1,4 @@
-package feather.ci.jobs
+package jobs.builders.jobs
 
 import feather.ci.builders.*
 import javaposse.jobdsl.dsl.DslFactory
@@ -26,6 +26,7 @@ class ClientTestJob {
         .TriggerBuildOnGitPush()
         .InjectEnvironmentalVariable('Path', '$Path;C:\\Users\\jenkinsci\\AppData\\Roaming\\npm')
         .AddNodeJsFolderToPath('nodejs')
+        .RunClientTests()
         .GetJob()
     }
   }
