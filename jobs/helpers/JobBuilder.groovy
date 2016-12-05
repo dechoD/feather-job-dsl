@@ -79,6 +79,16 @@ grunt''')
     return this
   }
 
+  JobBuilder InstallFeatherPackages() {
+    job.with {
+      steps {
+        batchFile('''.nuget\\NuGet.exe install ".\\Telerik.Sitefinity.Frontend\\packages.config" -source "\\\\telerik.com\\distributions\\OfficialReleases\\Sitefinity\\nuget\\feather;\\\\feather-ci\\C$\\FeatherFeed\\FeatherFeed\\Packages;http://feather-ci.cloudapp.net:8088/nuget/;https://www.nuget.org/api/v2/;http://nuget.sitefinity.com/nuget/"  -NonInteractive -RequireConsent -solutionDir ".\\ " -NoCache''')
+      }
+    }
+
+    return this
+  }
+
   JobBuilder AddNodeJsFolderToPath(String folderPath) {
     job.with {
       wrappers {
@@ -139,21 +149,6 @@ grunt''')
     return this
   }
 
-  // Integration test steps before Stoyan's refactoring
-  JobBuilder DownloadSitefinityAndTestRunner(String blobName) {
-    job.with {
-      steps {
-        batchFile('''rd %LOCALAPPDATA%\\NuGet\\Cache /s /q
-
-        C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\AzureBlobStorage.ps1; DeleteLocalBlobStorage; DownloadFromBlobStorage -BlobName ''' + blobName + '''; DownloadFromBlobStorage -BlobName 'Telerik.WebTestRunner.zip' -UnzipLocation 'C:\\Tools\\Telerik.WebTestRunner.Cmd'"
-
-        C:\\AzureBlobStorage\\SitefinityWebApp\\.nuget\\NuGet.exe restore C:\\AzureBlobStorage\\SitefinityWebApp\\SitefinityWebApp.sln -source "http://feather-ci.cloudapp.net:8088/nuget/;\\\\telerik.com\\distributions\\OfficialReleases\\Sitefinity\\nuget;http://nuget.sitefinity.com/nuget;https://www.nuget.org/api/v2" -NoCache''')
-      }
-    }
-
-    return this
-  }
-
   JobBuilder MSBuildProject(String fileTobuild, String targets ='Rebuild') {
     job.with {
       steps {
@@ -168,156 +163,69 @@ grunt''')
     return this
   }
 
-  JobBuilder RestoreSitefinityNugetPackages() {
+  JobBuilder PublishMSTestReport(String filePath) {
     job.with {
-      steps {
-        batchFile('"C:\\AzureBlobStorage\\SitefinityWebApp\\.nuget\\NuGet.exe" restore "C:\\AzureBlobStorage\\SitefinityWebApp\\SitefinityWebApp.sln" -source "http://feather-ci.cloudapp.net:8088/nuget/;http://nuget.sitefinity.com/nuget/;https://www.nuget.org/api/v2" -NoCache')
+      configure {
+        it / 'publishers' / 'hudson.plugins.mstest.MSTestPublisher'(plugin: 'mstest@0.19') {
+          'testResultsFile'(filePath)
+          'buildTime'('0')
+          'failOnError'('false')
+          'keepLongStdio'('true')
+        }
       }
     }
 
     return this
   }
 
-  JobBuilder CopyFeatherDllAndPackages() {
+  JobBuilder PublishEmmaCoverageReport(String filePath) {
     job.with {
-      steps {
-        batchFile('''powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\Utilities.ps1;ReplaceAssemblies -from '.\\FeatherWidgets\\' -to 'C:\\AzureBlobStorage\\SitefinityWebApp\\packages' -filter 'Telerik.Sitefinity.Frontend.*.dll' "
-
-        powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\Utilities.ps1;ReplaceAssemblies -from '.\\Feather\\Telerik.Sitefinity.Frontend\\bin\\Release' -to 'C:\\AzureBlobStorage\\SitefinityWebApp\\packages' -filter 'Telerik.Sitefinity.Frontend.dll' "
-        powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\Utilities.ps1;ReplaceAssemblies -from '.\\Feather\\Telerik.Sitefinity.Frontend.Data\\bin\\Release' -to 'C:\\AzureBlobStorage\\SitefinityWebApp\\packages' -filter 'Telerik.Sitefinity.Frontend.*.dll' "
-        powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\Utilities.ps1;ReplaceAssemblies -from '.\\Feather\\Telerik.Sitefinity.Frontend\\bin\\Release' -to 'C:\\AzureBlobStorage\\SitefinityWebApp\\packages' -filter 'Telerik.Sitefinity.Mvc.dll' "
-
-        powershell.exe -executionpolicy unrestricted -noninteractive -command "Remove-Item 'C:\\AzureBlobStorage\\SitefinityWebApp\\ResourcePackages\\*' -recurse; Get-ChildItem Bootstrap -path '.\\FeatherPackages' | Copy-Item -destination 'C:\\AzureBlobStorage\\SitefinityWebApp\\ResourcePackages' -force -recurse"''')
+      publishers {
+        emma(filePath) {
+          minClass(50)
+          maxClass(100)
+          minMethod(50)
+          maxMethod(100)
+          minBlock(50)
+          maxBlock(80)
+          minLine(50)
+          maxLine(80)
+          minCondition(0)
+          maxCondition(0)
+        }
       }
     }
 
     return this
   }
 
-  JobBuilder SetupSitefinityWithFeather() {
+  JobBuilder PublishCoberturaCoverageReport(String filePath) {
     job.with {
-      steps {
-        batchFile('''if exist %windir%\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe (
-          echo "Powershell path is %windir%\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe"
-          %windir%\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\SitefinitySetup.ps1 -ArgumentList $true, $false, $true, $true;import-module .\\Tooling\\Feather\\SetupScripts\\FeatherSetup.ps1;DeleteFeatherWidgets;InstallFeatherPackages .\\FeatherPackages;InstallFeatherWidgets .\\FeatherWidgets;CopyTestAssemblies .\\Feather $websiteBinariesDirectory;"
-          ) else (
-            echo "Powershell path is %windir%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-            %windir%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\SitefinitySetup.ps1 -ArgumentList $true, $false, $true, $true;import-module .\\Tooling\\Feather\\SetupScripts\\FeatherSetup.ps1;DeleteFeatherWidgets;InstallFeatherPackages .\\FeatherPackages;InstallFeatherWidgets .\\FeatherWidgets;CopyTestAssemblies .\\Feather $websiteBinariesDirectory;"
-            )''')
-          }
+      publishers {
+        cobertura(filePath) {
+          failNoReports(true)
+          sourceEncoding('ASCII')
+
+          // the following targets are added by default to check the method, line and conditional level coverage
+          methodTarget(80, 0, 0)
+          lineTarget(80, 0, 0)
+          conditionalTarget(70, 0, 0)
         }
-
-        return this
-      }
-
-      JobBuilder RecreateFolder(String folderPath) {
-        job.with {
-          steps {
-            batchFile("""echo 'Recreate test results folder'
-            rd /S /Q ${folderPath}
-            mkdir ${folderPath}""")
-          }
-        }
-
-        return this
-      }
-
-      JobBuilder EnsureSitefinityIsRunning() {
-        job.with {
-          steps {
-            batchFile('''powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\Config.ps1;import-module .\\Tooling\\Feather\\SetupScripts\\IIS.ps1;EnsureSitefinityIsRunning $($config.SitefinitySite.sslurl)''')
-          }
-        }
-
-        return this
-      }
-
-      JobBuilder RunIntegrationTests() {
-        job.with {
-          configure {
-            it / 'builders' / 'org.jenkinsci.plugins.windows__exe__runner.ExeBuilder'(plugin: 'windows-exe-runner@1.2') {
-              'exeName'('')
-              'cmdLineArgs'('''run
-              /Url="https://localhost:443/";
-              /assemblyname="Telerik.Sitefinity.Frontend.TestIntegration"
-              /TimeOutInMinutes="300"
-              /TraceFilePath="TestResults\\\$JOB_NAME-\$BUILD_NUMBER-\$BUILD_ID.trx";
-              /RunName="FeatherIntegrationTests";
-              /LoggerType=MsTrx
-              /WriteTestResultToConsole="true"''')
-              'failBuild'('false')
-            }
-          }
-        }
-
-        return this
-      }
-
-      JobBuilder PublishMSTestReport(String filePath) {
-        job.with {
-          configure {
-            it / 'publishers' / 'hudson.plugins.mstest.MSTestPublisher'(plugin: 'mstest@0.19') {
-              'testResultsFile'(filePath)
-              'buildTime'('0')
-              'failOnError'('false')
-              'keepLongStdio'('true')
-            }
-          }
-        }
-
-        return this
-      }
-
-      JobBuilder PublishEmmaCoverageReport(String filePath) {
-        job.with {
-          publishers {
-            emma(filePath) {
-              minClass(50)
-              maxClass(100)
-              minMethod(50)
-              maxMethod(100)
-              minBlock(50)
-              maxBlock(80)
-              minLine(50)
-              maxLine(80)
-              minCondition(0)
-              maxCondition(0)
-            }
-          }
-        }
-
-        return this
-      }
-
-      JobBuilder PublishCoberturaCoverageReport(String filePath) {
-        job.with {
-          publishers {
-            cobertura(filePath) {
-              failNoReports(true)
-              sourceEncoding('ASCII')
-
-              // the following targets are added by default to check the method, line and conditional level coverage
-              methodTarget(80, 0, 0)
-              lineTarget(80, 0, 0)
-              conditionalTarget(70, 0, 0)
-            }
-          }
-        }
-
-        return this
-      }
-
-      JobBuilder PublishJunitTestReport(String filePath) {
-        job.with {
-          publishers {
-            archiveJunit(filePath) {
-              retainLongStdout()
-            }
-          }
-        }
-
-        return this
       }
     }
 
-    // End of integration test steps before Stoyan's refactoring
+    return this
+  }
+
+  JobBuilder PublishJunitTestReport(String filePath) {
+    job.with {
+      publishers {
+        archiveJunit(filePath) {
+          retainLongStdout()
+        }
+      }
+    }
+
+    return this
+  }
+}
