@@ -119,6 +119,7 @@ grunt''')
           branch(branchToUse)
           extensions {
             relativeTargetDirectory('Feather')
+            wipeOutWorkspace()
           }
         }
         git {
@@ -129,6 +130,7 @@ grunt''')
           branch(branchToUse)
           extensions {
             relativeTargetDirectory('feather-widgets')
+            wipeOutWorkspace()
           }
         }
       }
