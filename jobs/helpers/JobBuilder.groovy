@@ -163,6 +163,22 @@ grunt''')
     return this
   }
 
+  JobBuilder RunUnitTestsWithMSTest(String filePath) {
+    job.with {
+      configure {
+        it / 'builders' / 'org.jenkinsci.plugins.MsTestBuilder'(plugin: 'mstestrunner@1.1.2') {
+          'msTestName'('MsTest')
+          'testFiles'('Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll')
+          'resultFile'('tests.trx')
+          'cmdLineArgs'('/testsettings:Tests\\TestSettings.testsettings')
+          'continueOnFail'('false')
+        }
+      }
+    }
+
+    return this
+  }
+
   JobBuilder PublishMSTestReport(String filePath) {
     job.with {
       configure {

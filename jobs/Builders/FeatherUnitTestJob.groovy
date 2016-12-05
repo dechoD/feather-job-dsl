@@ -27,6 +27,7 @@ class FeatherUnitTestJob {
         .MSBuildProject('.nuget\\NuGet.targets', 'CheckPrerequisites')
         .InstallFeatherPackages()
         .MSBuildProject('Feather.sln')
+        .RunUnitTestsWithMSTest()
         .PublishEmmaCoverageReport('data.xml')
         .GetJob()
     }
