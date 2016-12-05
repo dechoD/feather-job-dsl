@@ -24,6 +24,7 @@ class FeatherUnitTestJob {
 
       jobBuilder
         .SetClientTestsGitSource('*/CodeBaseIntegration')
+        .MSBuildProject('.nuget\\NuGet.targets', 'CheckPrerequisites')
         .PublishEmmaCoverageReport('data.xml')
         .GetJob()
     }

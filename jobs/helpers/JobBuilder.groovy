@@ -154,13 +154,13 @@ grunt''')
     return this
   }
 
-  JobBuilder MSBuildProject(String fileTobuild) {
+  JobBuilder MSBuildProject(String fileTobuild, String targets ='Rebuild') {
     job.with {
       steps {
         msBuild {
           msBuildInstallation('.NET 4.0 64bit')
           buildFile("${fileTobuild}")
-          args('/p:Configuration="Release" /p:Platform="Any CPU" /t:Rebuild')
+          args("/p:Configuration=\"Release\" /p:Platform=\"Any CPU\" /t:${targets}")
         }
       }
     }
