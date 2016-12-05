@@ -242,6 +242,18 @@ grunt''')
 
         return this
       }
+
+      JobBuilder PublishJunitTestReport(String filePath) {
+        job.with {
+          publishers {
+            archiveJunit(filePath) {
+              retainLongStdout()
+            }
+          }
+        }
+
+        return this
+      }
     }
 
     // End of integration test steps before Stoyan's refactoring
