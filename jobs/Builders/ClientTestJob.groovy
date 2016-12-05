@@ -10,6 +10,7 @@ class ClientTestJob {
   String name
   String description
   String emails
+  String featherBranch
 
   Job build(DslFactory factory) {
     Job baseJob = new BaseJobBuilder(
@@ -22,7 +23,7 @@ class ClientTestJob {
 
       jobBuilder
         .RestrictWhereThisProjectCanBeRun("ClientTests")
-        .SetGitSourceCodeManagement("*/CodeBaseIntegration")
+        .SetGitSourceCodeManagement(this.description)
         .TriggerBuildOnGitPush()
         .InjectEnvironmentalVariable('Path', '$Path;C:\\Users\\jenkinsci\\AppData\\Roaming\\npm')
         .AddNodeJsFolderToPath('nodejs')
