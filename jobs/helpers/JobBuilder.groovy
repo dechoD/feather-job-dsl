@@ -86,7 +86,6 @@ class JobBuilder {
             github('Sitefinity/feather', 'https')
             credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
           }
-          wipeOutWorkspace()
         }
       }
     }
