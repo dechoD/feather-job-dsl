@@ -1,4 +1,4 @@
-import jobs.builders.jobs.*
+import jobs.builders.*
 
 new ClientTestJob(
   name: "Codebase_FeatherClientTest",

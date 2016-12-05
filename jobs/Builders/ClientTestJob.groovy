@@ -1,10 +1,9 @@
-package jobs.builders.jobs
+package jobs.builders
 
-import feather.ci.builders.*
+import jobs.helpers.*
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.*
-import utilities.*
 
 class ClientTestJob {
   String name

@@ -1,9 +1,101 @@
-package utilities
+package jobs.helpers
 
 import javaposse.jobdsl.dsl.jobs.*
+import javaposse.jobdsl.dsl.Job
 
-class Steps {
-  static void DownloadSitefinityAndTestRunner(FreeStyleJob job, String blobName) {
+class JobBuilder {
+  def job
+
+  JobBuilder (FreeStyleJob _job) {
+    job = _job
+  }
+
+  Job GetJob () {
+    return job
+  }
+
+  JobBuilder RestrictWhereThisProjectCanBeRun(String agentLabel) {
+    job.with {
+      label(agentLabel)
+    }
+
+    return this
+  }
+
+  JobBuilder TriggerBuildOnGitPush() {
+    job.with {
+      triggers {
+        githubPush()
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder DeleteWorkspaceBeforeBuildStarts()
+  {
+    job.with {
+      wrappers {
+        preBuildCleanup()
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder InjectEnvironmentalVariable(String variableName, String variableValue)
+  {
+    job.with {
+      wrappers {
+        environmentVariables {
+          env(variableName, variableValue)
+        }
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder RunClientTests() {
+    job.with {
+      steps {
+        powerShell('''npm install
+        grunt''')
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder AddNodeJsFolderToPath(String folderPath) {
+    job.with {
+      wrappers {
+        nodejs(folderPath)
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder SetGitSourceCodeManagement(String branchToUse) {
+    job.with {
+      scm {
+        git {
+          branch(branchToUse)
+          remote {
+            github('Sitefinity/feather', 'https')
+            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+          }
+          wipeOutWorkspace()
+        }
+      }
+    }
+
+    return this
+  }
+
+  // Integration test steps before Stoyan's refactoring
+  JobBuilder DownloadSitefinityAndTestRunner(String blobName) {
     job.with {
       steps {
         batchFile('''rd %LOCALAPPDATA%\\NuGet\\Cache /s /q
@@ -13,9 +105,11 @@ class Steps {
         C:\\AzureBlobStorage\\SitefinityWebApp\\.nuget\\NuGet.exe restore C:\\AzureBlobStorage\\SitefinityWebApp\\SitefinityWebApp.sln -source "http://feather-ci.cloudapp.net:8088/nuget/;\\\\telerik.com\\distributions\\OfficialReleases\\Sitefinity\\nuget;http://nuget.sitefinity.com/nuget;https://www.nuget.org/api/v2" -NoCache''')
       }
     }
+
+    return this
   }
 
-  static void MSBuildProject(FreeStyleJob job, String fileTobuild) {
+  JobBuilder MSBuildProject(String fileTobuild) {
     job.with {
       steps {
         msBuild {
@@ -25,17 +119,21 @@ class Steps {
         }
       }
     }
+
+    return this
   }
 
-  static void RestoreSitefinityNugetPackages(FreeStyleJob job) {
+  JobBuilder RestoreSitefinityNugetPackages() {
     job.with {
       steps {
         batchFile('"C:\\AzureBlobStorage\\SitefinityWebApp\\.nuget\\NuGet.exe" restore "C:\\AzureBlobStorage\\SitefinityWebApp\\SitefinityWebApp.sln" -source "http://feather-ci.cloudapp.net:8088/nuget/;http://nuget.sitefinity.com/nuget/;https://www.nuget.org/api/v2" -NoCache')
       }
     }
+
+    return this
   }
 
-  static void CopyFeatherDllAndPackages(FreeStyleJob job) {
+  JobBuilder CopyFeatherDllAndPackages() {
     job.with {
       steps {
         batchFile('''powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\Utilities.ps1;ReplaceAssemblies -from '.\\FeatherWidgets\\' -to 'C:\\AzureBlobStorage\\SitefinityWebApp\\packages' -filter 'Telerik.Sitefinity.Frontend.*.dll' "
@@ -47,9 +145,11 @@ class Steps {
         powershell.exe -executionpolicy unrestricted -noninteractive -command "Remove-Item 'C:\\AzureBlobStorage\\SitefinityWebApp\\ResourcePackages\\*' -recurse; Get-ChildItem Bootstrap -path '.\\FeatherPackages' | Copy-Item -destination 'C:\\AzureBlobStorage\\SitefinityWebApp\\ResourcePackages' -force -recurse"''')
       }
     }
+
+    return this
   }
 
-  static void SetupSitefinityWithFeather(FreeStyleJob job) {
+  JobBuilder SetupSitefinityWithFeather() {
     job.with {
       steps {
         batchFile('''if exist %windir%\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe (
@@ -61,9 +161,11 @@ class Steps {
             )''')
           }
         }
+
+        return this
       }
 
-      static void RecreateFolder(FreeStyleJob job, String folderPath) {
+      JobBuilder RecreateFolder(String folderPath) {
         job.with {
           steps {
             batchFile("""echo 'Recreate test results folder'
@@ -71,17 +173,21 @@ class Steps {
             mkdir ${folderPath}""")
           }
         }
+
+        return this
       }
 
-      static void EnsureSitefinityIsRunning(FreeStyleJob job) {
+      JobBuilder EnsureSitefinityIsRunning() {
         job.with {
           steps {
             batchFile('''powershell.exe -executionpolicy unrestricted -noninteractive -command "import-module .\\Tooling\\Feather\\SetupScripts\\Config.ps1;import-module .\\Tooling\\Feather\\SetupScripts\\IIS.ps1;EnsureSitefinityIsRunning $($config.SitefinitySite.sslurl)''')
           }
         }
+
+        return this
       }
 
-      static void RunIntegrationTests(FreeStyleJob job) {
+      JobBuilder RunIntegrationTests() {
         job.with {
           configure {
             it / 'builders' / 'org.jenkinsci.plugins.windows__exe__runner.ExeBuilder'(plugin: 'windows-exe-runner@1.2') {
@@ -98,9 +204,11 @@ class Steps {
             }
           }
         }
+
+        return this
       }
 
-      static void PublishMSTestReport(FreeStyleJob job, String filePath) {
+      JobBuilder PublishMSTestReport(String filePath) {
         job.with {
           configure {
             it / 'publishers' / 'hudson.plugins.mstest.MSTestPublisher'(plugin: 'mstest@0.19') {
@@ -111,5 +219,9 @@ class Steps {
             }
           }
         }
+
+        return this
       }
     }
+
+    // End of integration test steps before Stoyan's refactoring
