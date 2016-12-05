@@ -60,7 +60,7 @@ class JobBuilder {
     job.with {
       steps {
         powerShell('''npm install
-        grunt''')
+grunt''')
       }
     }
 
