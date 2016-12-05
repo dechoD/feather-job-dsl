@@ -163,6 +163,20 @@ grunt''')
     return this
   }
 
+  JobBuilder RunWindowsExe(String filePath, String parameters, String failOnError) {
+    job.with {
+      configure {
+        it / 'builders' / 'org.jenkinsci.plugins.windows__exe__runner.ExeBuilder'(plugin: 'windows-exe-runner@1.2') {
+          'exeName'(filePath)
+          'cmdLineArgs'(parameters)
+          'failBuild'(failOnError)
+        }
+      }
+    }
+
+    return this
+  }
+
   JobBuilder RunUnitTestsWithMSTest(String filePath) {
     job.with {
       configure {

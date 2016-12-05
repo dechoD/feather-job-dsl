@@ -28,6 +28,7 @@ class FeatherUnitTestJob {
         .InstallFeatherPackages()
         .MSBuildProject('Feather.sln')
         .RunUnitTestsWithMSTest()
+        .RunWindowsExe('CodeCoverageConverter.exe', '-source:TestResults\\In\\FEATHER-CI\\data.coverage -dest:data.xml', 'true')
         .PublishEmmaCoverageReport('data.xml')
         .GetJob()
     }
