@@ -28,6 +28,7 @@ class ClientTestJob {
         .AddNodeJsFolderToPath('nodejs')
         .RunClientTests()
         .PublishCoberturaCoverageReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/coverage/cobertura/cobertura-coverage.xml')
+        .PublishJunitTestReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/TestResults/*.xml')
         .GetJob()
     }
   }
