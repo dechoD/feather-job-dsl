@@ -72,3 +72,9 @@ new FeatherWidgetsUnitTestJob(
   featherBranch: "*/master",
   emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
 
+new MvcUnitTestJob(
+  name: "CodeBase_Telerik.Sitefinity.Mvc_UnitTests",
+  description: "",
+  featherBranch: "*/CodeBaseIntegration",
+  emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
+
