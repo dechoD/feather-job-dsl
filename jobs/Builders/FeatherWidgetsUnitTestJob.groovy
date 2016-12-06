@@ -23,11 +23,11 @@ class FeatherWidgetsUnitTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetClientTestsGitSource('*/CodeBaseIntegration', 'Sitefinity/feather-widgets')
+        .SetClientTestsGitSource(featherBranch, 'Sitefinity/feather-widgets')
         .MSBuildProject('FeatherWidgets.sln')
         .RunUnitTestsWithMSTest('Tests\\FeatherWidgets.TestUnit\\bin\\Release\\FeatherWidgets.TestUnit.dll')
         .RunWindowsExe('CodeCoverageConverter.exe', '-source:TestResults\\In\\FEATHER-CI\\data.coverage -dest:data.xml', 'true')
-        .PublishEmmaCoverageReport('data.xml')        
+        .PublishEmmaCoverageReport('data.xml')
         .BuildOtherProject('Codebase_FeatherWidgetsClientTest', 'SUCCESS')
         .GetJob()
     }

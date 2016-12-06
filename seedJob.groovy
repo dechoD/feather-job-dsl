@@ -39,13 +39,25 @@ new ClientWidgetsTestJob(
 new FeatherUnitTestJob(
   name: "Codebase_FeatherUnitTests",
   description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
+  featherBranch: "*/CodeBaseIntegration",
+  emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
+
+new FeatherUnitTestJob(
+  name: "DBP_Codebase_FeatherUnitTests",
+  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
   featherBranch: "*/DBP",
+  emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
+
+new FeatherUnitTestJob(
+  name: "Master_FeatherUnitTests",
+  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
+  featherBranch: "*/master",
   emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
 
 new FeatherWidgetsUnitTestJob(
   name: "Codebase_FeatherWidgetsUnitTests",
   description: "The Frontend Widgets for the Sitefinity Feather project.",
-  featherBranch: "*/DBP",
+  featherBranch: "*/CodeBaseIntegration",
   emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
 
 

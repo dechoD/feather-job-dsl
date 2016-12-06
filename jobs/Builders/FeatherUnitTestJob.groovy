@@ -23,7 +23,7 @@ class FeatherUnitTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetClientTestsGitSource('*/CodeBaseIntegration')
+        .SetClientTestsGitSource(featherBranch)
         .MSBuildProject('.nuget\\NuGet.targets', 'CheckPrerequisites')
         .InstallFeatherPackages()
         .MSBuildProject('Feather.sln')
