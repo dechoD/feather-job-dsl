@@ -33,7 +33,7 @@ class UiTestJob {
         .SetUiTestParameters(this.branch, this.sitefinityPackage, this.category, this.sslEnabled, this.enableMultisite, this.readOnlyMode, this.rerunFailedUITests)
         .ExecuteConcurentBuilds()
         .RestrictWhereThisProjectCanBeRun('UITestsNew')
-        .SetUiTestsGitSources(this.branch)
+        .SetUiTestsGitSources('$Branch')
         .DeleteWorkspaceBeforeBuildStarts()
         .RunUiTests(this.command)
         .PublishMSTestReport('TestResults\\*.trx')
