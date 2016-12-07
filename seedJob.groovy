@@ -85,15 +85,28 @@ new MvcUnitTestJob(
 //  featherBranch: "*/master",
 //  emails: "decho.decchev@progress.com").build(this)
 //
-//new UiTestJob(
-//  name: "Tooling_FeatherWidgetsUITests_ContentBlock",
-//  description: "The Frontend Widgets for the Sitefinity Feather project.",
-//  branch: "master",
-//  sitefinityPackage: "SitefinityWebApp_9.2_6280.0_Internal.zip",
-//  category: "ContentBlock",
-//  sslEnabled: false,
-//  enableMultisite: true,
-//  readOnlyMode: false,
-//  rerunFailedUITests: true,
-//  command: ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
-//  emails: "decho.decchev@progress.com").build(this)
+new UiTestJob(
+  name: "Tooling_FeatherWidgetsUITests_ContentBlock_DSL",
+  description: "The Frontend Widgets for the Sitefinity Feather project.",
+  branch: "master",
+  sitefinityPackage: "SitefinityWebApp_9.2_6280.0_Internal.zip",
+  category: "ContentBlock",
+  sslEnabled: false,
+  enableMultisite: true,
+  readOnlyMode: false,
+  rerunFailedUITests: true,
+  command: ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
+  emails: "decho.decchev@progress.com").build(this)
+
+new UiTestJob(
+  name: "Tooling_FeatherWidgetsUITests_Forms_DSL",
+  description: "The Frontend Widgets for the Sitefinity Feather project.",
+  branch: "master",
+  sitefinityPackage: "SitefinityWebApp_9.2_6280.0_Internal.zip",
+  category: "Forms",
+  sslEnabled: false,
+  enableMultisite: true,
+  readOnlyMode: false,
+  rerunFailedUITests: true,
+  command: ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
+  emails: "decho.decchev@progress.com").build(this)
