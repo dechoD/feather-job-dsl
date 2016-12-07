@@ -25,7 +25,8 @@ class ClientTestJob {
       jobBuilder
         .SetClientTestsGitSource(this.featherBranch)
         .RunClientTests()
-        ..PublishJunitTestReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/TestResults/*.xml')
+        .PublishCoberturaCoverageReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/coverage/cobertura/cobertura-coverage.xml')
+        .PublishJunitTestReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/TestResults/*.xml')
         .GetJob()
     }
   }
