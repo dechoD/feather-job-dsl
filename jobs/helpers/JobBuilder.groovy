@@ -22,6 +22,30 @@ class JobBuilder {
     return this
   }
 
+  JobBuilder SetUiTestParameters(String branch, String sitefinityPackage, String category, Boolean sslEnabled, Boolean enableMultisite, Boolean readOnlyMode, Boolean rerunFailedUITests) {
+    job.with {
+      parameters {
+        stringParam("Branch", branch)
+        stringParam("SitefinityPackage", sitefinityPackage)
+        stringParam("Category", category)
+        booleanParam("SslEnabled", sslEnabled)
+        booleanParam("EnableMultisite", enableMultisite)
+        booleanParam("ReadOnlyMode", readOnlyMode)
+        booleanParam("RerunFailedUITests", rerunFailedUITests)
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder ExecuteConcurentBuilds() {
+    job.with {
+      concurrentBuild()
+    }
+
+    return this
+  }
+
   JobBuilder TriggerBuildOnGitPush() {
     job.with {
       triggers {
@@ -37,6 +61,17 @@ class JobBuilder {
     job.with {
       wrappers {
         preBuildCleanup()
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder DeleteWorkspaceWhenBuildIsDone()
+  {
+    job.with {
+      publishers {
+        wsCleanup()
       }
     }
 
@@ -84,6 +119,16 @@ grunt''')
       steps {
         batchFile('''rd %LOCALAPPDATA%\\NuGet\\Cache /s /q
 .nuget\\NuGet.exe install ".\\Telerik.Sitefinity.Frontend\\packages.config" -source "\\\\telerik.com\\distributions\\OfficialReleases\\Sitefinity\\nuget\\feather;\\\\feather-ci\\C$\\FeatherFeed\\FeatherFeed\\Packages;http://feather-ci.cloudapp.net:8088/nuget/;https://www.nuget.org/api/v2/;http://nuget.sitefinity.com/nuget/"  -NonInteractive -RequireConsent -solutionDir ".\\ " -NoCache''')
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder RunUiTests(String command) {
+    job.with {
+      steps {
+        batchFile('C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command "' + command + ' -sitefinityPackage \'%SitefinityPackage%\' -buildNumber \'%JOB_NAME%_%BUILD_NUMBER%\' -category \'%Category%\' -sslEnabled $%SslEnabled% -multisiteEnabled $%EnableMultisite% -readOnlyMode $%ReadOnlyMode% -rerunFailedUITests $%RerunFailedUITests%"')
       }
     }
 
@@ -178,6 +223,59 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
           branch(branchToUse)
           extensions {
             relativeTargetDirectory('feather-widgets')
+            wipeOutWorkspace()
+          }
+        }
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder SetUiTestsGitSources(String branchToUse) {
+    job.with {
+      multiscm {
+        git {
+          remote {
+            github('Sitefinity/feather')
+            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('Feather')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/feather-widgets')
+            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('FeatherWidgets')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/feather-packages')
+            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('FeatherPackages')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/Tooling')
+            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+          }
+          branch('*/tooling-refactoring')
+          extensions {
+            relativeTargetDirectory('Tooling')
             wipeOutWorkspace()
           }
         }
