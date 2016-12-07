@@ -19,7 +19,7 @@ new ClientTestJob(
 //  emails: "decho.decchev@progress.com").build(this)
 //
 new ClientWidgetsTestJob(
-  name: "Codebase_FeatherWidgetsClientTest_DslScript",
+  name: "Codebase_FeatherWidgetsClientTest_DSL",
   description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
   featherBranch: "*/CodeBaseIntegration",
   emails: "decho.decchev@progress.com").build(this)
@@ -36,12 +36,12 @@ new ClientWidgetsTestJob(
 //  featherBranch: "*/DBP",
 //  emails: "decho.decchev@progress.com").build(this)
 //
-//new FeatherUnitTestJob(
-//  name: "Codebase_FeatherUnitTests",
-//  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
-//  featherBranch: "*/CodeBaseIntegration",
-//  emails: "decho.decchev@progress.com").build(this)
-//
+new FeatherUnitTestJob(
+  name: "Codebase_FeatherUnitTests_DSL",
+  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
+  featherBranch: "*/CodeBaseIntegration",
+  emails: "decho.decchev@progress.com").build(this)
+
 //new FeatherUnitTestJob(
 //  name: "DBP_Codebase_FeatherUnitTests",
 //  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
@@ -72,12 +72,12 @@ new ClientWidgetsTestJob(
 //  featherBranch: "*/master",
 //  emails: "decho.decchev@progress.com").build(this)
 //
-//new MvcUnitTestJob(
-//  name: "CodeBase_Telerik.Sitefinity.Mvc_UnitTests",
-//  description: "",
-//  featherBranch: "*/CodeBaseIntegration",
-//  emails: "decho.decchev@progress.com").build(this)
-//
+new MvcUnitTestJob(
+  name: "CodeBase_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+  description: "",
+  featherBranch: "*/CodeBaseIntegration",
+  emails: "decho.decchev@progress.com").build(this)
+
 //new MvcUnitTestJob(
 //  name: "Master_Telerik.Sitefinity.Mvc_UnitTests",
 //  description: "",
