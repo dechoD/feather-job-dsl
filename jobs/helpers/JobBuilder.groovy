@@ -189,7 +189,7 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
           branch(branchToUse)
           remote {
             github(repository, 'https')
-            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
           }
           extensions {
             wipeOutWorkspace()
@@ -207,7 +207,7 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
         git {
           remote {
             github('Sitefinity/feather')
-            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
           }
           branch(branchToUse)
           extensions {
@@ -218,7 +218,7 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
         git {
           remote {
             github('Sitefinity/feather-widgets')
-            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
           }
           branch(branchToUse)
           extensions {
@@ -238,7 +238,7 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
         git {
           remote {
             github('Sitefinity/feather')
-            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
           }
           branch(branchToUse)
           extensions {
@@ -249,7 +249,7 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
         git {
           remote {
             github('Sitefinity/feather-widgets')
-            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
           }
           branch(branchToUse)
           extensions {
@@ -260,7 +260,7 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
         git {
           remote {
             github('Sitefinity/feather-packages')
-            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
           }
           branch(branchToUse)
           extensions {
@@ -271,7 +271,7 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
         git {
           remote {
             github('Sitefinity/Tooling')
-            credentials('db15f140-2fb2-427a-bde2-ae2c940b4e98')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
           }
           branch('*/tooling-refactoring')
           extensions {
