@@ -316,7 +316,7 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
   JobBuilder RunUnitTestsWithMSTest(String filePath) {
     job.with {
       configure {
-        it / 'builders' / 'org.jenkinsci.plugins.MsTestBuilder'(plugin: 'mstestrunner@1.1.2') {
+        it / 'builders' / 'org.jenkinsci.plugins.MsTestBuilder' {
           'msTestName'('MsTest')
           'testFiles'(filePath)
           'resultFile'('tests.trx')
