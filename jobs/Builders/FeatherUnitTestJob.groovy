@@ -12,6 +12,7 @@ class FeatherUnitTestJob {
   String description
   String emails
   String featherBranch
+  String testFiles
 
   Job build(DslFactory factory) {
     Job baseJob = new UnitTestBase(
@@ -27,7 +28,7 @@ class FeatherUnitTestJob {
         .MSBuildProject('.nuget\\NuGet.targets', 'CheckPrerequisites')
         .InstallFeatherPackages()
         .MSBuildProject('Feather.sln')
-        .RunUnitTestsWithMSTest()
+        .RunUnitTestsWithMSTest(testFiles)
         .RunWindowsExe('CodeCoverageConverter.exe', '-source:TestResults\\In\\FEATHER-CI\\data.coverage -dest:data.xml', 'true')
         .PublishEmmaCoverageReport('data.xml')
         .GetJob()

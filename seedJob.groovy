@@ -40,7 +40,8 @@ new FeatherUnitTestJob(
   name: "Codebase_FeatherUnitTests_DSL",
   description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
   featherBranch: "*/CodeBaseIntegration",
-  emails: "decho.decchev@progress.com").build(this)
+  emails: "decho.decchev@progress.com",
+  testFiles: "'Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll'").build(this)
 
 //new FeatherUnitTestJob(
 //  name: "DBP_Codebase_FeatherUnitTests",
