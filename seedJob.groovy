@@ -4,7 +4,7 @@ new ClientTestJob(
   name: "Codebase_FeatherClientTest_DSL",
   description: "Runs client side tests for Feather projects and checks code coverage and jshint",
   featherBranch: "*/CodeBaseIntegration",
-  emails: "decho.decchev@progress.com tihomir.petrov@progress.com").build(this)
+  emails: "decho.decchev@progress.com").build(this)
 
 //new ClientTestJob(
 //  name: "Master_FeatherClientTest",
