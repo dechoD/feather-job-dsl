@@ -25,6 +25,7 @@ class ClientTestJob {
       jobBuilder
         .SetClientTestsGitSource(this.featherBranch)
         .RunClientTests()
+        ..PublishJunitTestReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/TestResults/*.xml')
         .GetJob()
     }
   }

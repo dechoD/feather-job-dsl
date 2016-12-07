@@ -25,8 +25,6 @@ class ClientTestBase {
         .TriggerBuildOnGitPush()
         .InjectEnvironmentalVariable('Path', '$Path;C:\\Users\\jenkinsci\\AppData\\Roaming\\npm')
         .AddNodeJsFolderToPath('nodejs')
-        .PublishCoberturaCoverageReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/coverage/cobertura/cobertura-coverage.xml')
-        .PublishJunitTestReport('Tests/Telerik.Sitefinity.Frontend.ClientTest/TestResults/*.xml')
         .GetJob()
     }
   }

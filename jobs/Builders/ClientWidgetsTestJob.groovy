@@ -25,6 +25,8 @@ class ClientWidgetsTestJob {
       jobBuilder
         .SetWidgetClientTestsGitSources(this.featherBranch)
         .RunWidgetClientTests()
+        .PublishCoberturaCoverageReport('feather-widgets/Tests/FeatherWidgets.ClientTest/coverage/cobertura/*/cobertura-coverage.xml')
+        .PublishJunitTestReport('feather-widgets/Tests/FeatherWidgets.ClientTest/TestResults/*/*.xml')
         .GetJob()
     }
   }
