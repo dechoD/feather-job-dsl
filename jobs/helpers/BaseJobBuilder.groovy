@@ -14,16 +14,16 @@ class BaseJobBuilder {
     factory.job(name) {
       it.description this.description
       logRotator(-1, 50, -1, -1)
-      publishers {
-        mailer(this.emails, false, true)
-      }
-      //triggers {
-      //  cron(this.cronExpression)
-      //}
 
       if (this.cronExpression != null) {
         triggers {
           cron(this.cronExpression)
+        }
+      }
+
+      if (this.emails != null) {
+        publishers {
+          mailer(this.emails, false, true)
         }
       }
     }
