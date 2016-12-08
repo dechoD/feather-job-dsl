@@ -5,8 +5,7 @@
       "name": "Codebase_FeatherClientTest_DSL",
       "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
       "featherBranch": "*/CodeBaseIntegration",
-      "emails": "",
-      "cronExpression": "H 22 * * 1-5"
+      "emails": ""
     },
     {
       "name": "Master_FeatherClientTest_DSL",
