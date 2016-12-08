@@ -27,13 +27,5 @@ class BaseJobBuilder {
         }
       }
     }
-
-    //if (this.cronExpression != null) {
-    //  factory.job(name) {
-    //    triggers {
-    //      cron(cronExpression)
-    //    }
-    //  }
-    //}
   }
 }
