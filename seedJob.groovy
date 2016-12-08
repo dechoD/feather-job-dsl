@@ -1,10 +1,29 @@
 import jobs.builders.*
+import utilities.JsonReader
 
-new ClientTestJob(
-  name: "Codebase_FeatherClientTest_DSL",
-  description: "Runs client side tests for Feather projects and checks code coverage and jshint",
-  featherBranch: "*/CodeBaseIntegration",
-  emails: "decho.decchev@progress.com").build(this)
+def jobs = JsonReader.getJsonConfig("jobs.json")
+
+jobs.clientJobs.each {
+  new ClientTestJob(
+    name: it.name,
+    description: it.description,
+    featherBranch: it.featherBranch,
+    emails: it.emails).build(this)
+}
+
+jobs.clientWidgetJobs.each {
+  new ClientWidgetsTestJob(
+    name: it.name,
+    description: it.description,
+    featherBranch: it.featherBranch,
+    emails: it.emails).build(this)
+}
+
+//new ClientTestJob(
+//  name: jobs.name,
+//  description: "Runs client side tests for Feather projects and checks code coverage and jshint",
+//  featherBranch: "*/CodeBaseIntegration",
+//  emails: "decho.decchev@progress.com").build(this)
 
 //new ClientTestJob(
 //  name: "Master_FeatherClientTest",
@@ -18,11 +37,11 @@ new ClientTestJob(
 //  featherBranch: "*/DBP",
 //  emails: "decho.decchev@progress.com").build(this)
 //
-new ClientWidgetsTestJob(
-  name: "Codebase_FeatherWidgetsClientTest_DSL",
-  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
-  featherBranch: "*/CodeBaseIntegration",
-  emails: "decho.decchev@progress.com").build(this)
+//new ClientWidgetsTestJob(
+//  name: "Codebase_FeatherWidgetsClientTest_DSL",
+//  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
+//  featherBranch: "*/CodeBaseIntegration",
+//  emails: "decho.decchev@progress.com").build(this)
 
 //new ClientWidgetsTestJob(
 //  name: "Master_FeatherWidgetsClientTest",
@@ -36,12 +55,12 @@ new ClientWidgetsTestJob(
 //  featherBranch: "*/DBP",
 //  emails: "decho.decchev@progress.com").build(this)
 //
-new FeatherUnitTestJob(
-  name: "Codebase_FeatherUnitTests_DSL",
-  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
-  featherBranch: "*/CodeBaseIntegration",
-  emails: "decho.decchev@progress.com",
-  testFiles: "Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll").build(this)
+//new FeatherUnitTestJob(
+//  name: "Codebase_FeatherUnitTests_DSL",
+//  description: "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
+//  featherBranch: "*/CodeBaseIntegration",
+//  emails: "decho.decchev@progress.com",
+//  testFiles: "Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll").build(this)
 
 //new FeatherUnitTestJob(
 //  name: "DBP_Codebase_FeatherUnitTests",
@@ -73,11 +92,11 @@ new FeatherUnitTestJob(
 //  featherBranch: "*/master",
 //  emails: "decho.decchev@progress.com").build(this)
 //
-new MvcUnitTestJob(
-  name: "CodeBase_Telerik.Sitefinity.Mvc_UnitTests_DSL",
-  description: "",
-  featherBranch: "*/CodeBaseIntegration",
-  emails: "decho.decchev@progress.com").build(this)
+//new MvcUnitTestJob(
+//  name: "CodeBase_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+//  description: "",
+//  featherBranch: "*/CodeBaseIntegration",
+//  emails: "decho.decchev@progress.com").build(this)
 
 //new MvcUnitTestJob(
 //  name: "Master_Telerik.Sitefinity.Mvc_UnitTests",
@@ -85,28 +104,28 @@ new MvcUnitTestJob(
 //  featherBranch: "*/master",
 //  emails: "decho.decchev@progress.com").build(this)
 //
-new UiTestJob(
-  name: "Tooling_FeatherWidgetsUITests_ContentBlock_DSL",
-  description: "The Frontend Widgets for the Sitefinity Feather project.",
-  branch: "master",
-  sitefinityPackage: "SitefinityWebApp_9.2_6280.0_Internal.zip",
-  category: "ContentBlock",
-  sslEnabled: false,
-  enableMultisite: true,
-  readOnlyMode: false,
-  rerunFailedUITests: true,
-  command: ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
-  emails: "decho.decchev@progress.com").build(this)
-
-new UiTestJob(
-  name: "Tooling_FeatherWidgetsUITests_Forms_DSL",
-  description: "The Frontend Widgets for the Sitefinity Feather project.",
-  branch: "master",
-  sitefinityPackage: "SitefinityWebApp_9.2_6280.0_Internal.zip",
-  category: "Forms",
-  sslEnabled: false,
-  enableMultisite: true,
-  readOnlyMode: false,
-  rerunFailedUITests: true,
-  command: ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
-  emails: "decho.decchev@progress.com").build(this)
+//new UiTestJob(
+//  name: "Tooling_FeatherWidgetsUITests_ContentBlock_DSL",
+//  description: "The Frontend Widgets for the Sitefinity Feather project.",
+//  branch: "master",
+//  sitefinityPackage: "SitefinityWebApp_9.2_6280.0_Internal.zip",
+//  category: "ContentBlock",
+//  sslEnabled: false,
+//  enableMultisite: true,
+//  readOnlyMode: false,
+//  rerunFailedUITests: true,
+//  command: ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
+//  emails: "decho.decchev@progress.com").build(this)
+//
+//new UiTestJob(
+//  name: "Tooling_FeatherWidgetsUITests_Forms_DSL",
+//  description: "The Frontend Widgets for the Sitefinity Feather project.",
+//  branch: "master",
+//  sitefinityPackage: "SitefinityWebApp_9.2_6280.0_Internal.zip",
+//  category: "Forms",
+//  sslEnabled: false,
+//  enableMultisite: true,
+//  readOnlyMode: false,
+//  rerunFailedUITests: true,
+//  command: ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
+//  emails: "decho.decchev@progress.com").build(this)

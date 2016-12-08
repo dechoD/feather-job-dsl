@@ -1,0 +1,32 @@
+{
+  "clientJobs":
+  [
+    {
+      "name": "Codebase_FeatherClientTest_DSL",
+      "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
+      "featherBranch": "*/CodeBaseIntegration",
+      "emails": ""
+    },
+    {
+      "name": "Master_FeatherClientTest_DSL",
+      "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
+      "featherBranch": "*/master",
+      "emails": ""
+    }
+  ],
+  "clientWidgetJobs":
+  [
+    {
+      "name": "Codebase_FeatherWidgetsClientTest_DSL",
+      "description": "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
+      "featherBranch": "*/CodeBaseIntegration",
+      "emails": ""
+    },
+    {
+      "name": "Master_FeatherWidgetsClientTest_DSL",
+      "description": "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
+      "featherBranch": "*/master",
+      "emails": ""
+    }
+  ]
+}
