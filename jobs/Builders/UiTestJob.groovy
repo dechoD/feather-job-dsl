@@ -2,7 +2,6 @@ package jobs.builders
 
 import jobs.helpers.BaseJobBuilder
 import jobs.helpers.JobBuilder
-import jobs.helpers.UiTestBase
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.*
@@ -21,7 +20,7 @@ class UiTestJob {
   String emails
 
   Job build(DslFactory factory) {
-    Job baseJob = new UiTestBase(
+    Job baseJob = new BaseJobBuilder(
       name: this.name,
       description: this.description,
       emails: this.emails
@@ -32,7 +31,7 @@ class UiTestJob {
       jobBuilder
         .SetUiTestParameters(this.branch, this.sitefinityPackage, this.category, this.sslEnabled, this.enableMultisite, this.readOnlyMode, this.rerunFailedUITests)
         .ExecuteConcurentBuilds()
-        .RestrictWhereThisProjectCanBeRun('UITestsNew')
+        .RestrictWhereThisProjectCanBeRun('UITests')
         .SetUiTestsGitSources('$Branch')
         .DeleteWorkspaceBeforeBuildStarts()
         .RunUiTests(this.command)

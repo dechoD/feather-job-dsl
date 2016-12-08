@@ -21,6 +21,21 @@ jobs.clientWidgetJobs.each {
     cronExpression: it.cronExpression).build(this)
 }
 
+jobs.uiJobs.each {
+  new UiTestJob(
+    name: it.name,
+    description: it.description,
+    branch: it.branch,
+    sitefinityPackage: it.sitefinityPackage,
+    category: it.category,
+    sslEnabled: it.sslEnabled,
+    enableMultisite: it.enableMultisite,
+    readOnlyMode: it.readOnlyMode,
+    rerunFailedUITests: it.rerunFailedUITests,
+    command: it.command,
+    emails: it.emails).build(this)
+}
+
 //new ClientTestJob(
 //  name: jobs.name,
 //  description: "Runs client side tests for Feather projects and checks code coverage and jshint",
