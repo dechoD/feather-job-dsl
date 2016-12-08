@@ -14,6 +14,8 @@ class JobBuilder {
     return job
   }
 
+  // ### GENERAL ###
+
   JobBuilder RestrictWhereThisProjectCanBeRun(String agentLabel) {
     job.with {
       label(agentLabel)
@@ -46,141 +48,7 @@ class JobBuilder {
     return this
   }
 
-  JobBuilder TriggerBuildOnGitPush() {
-    job.with {
-      triggers {
-        githubPush()
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder DeleteWorkspaceBeforeBuildStarts()
-  {
-    job.with {
-      wrappers {
-        preBuildCleanup()
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder DeleteWorkspaceWhenBuildIsDone()
-  {
-    job.with {
-      publishers {
-        wsCleanup()
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder InjectEnvironmentalVariable(String variableName, String variableValue)
-  {
-    job.with {
-      wrappers {
-        environmentVariables {
-          env(variableName, variableValue)
-        }
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder RunClientTests() {
-    job.with {
-      steps {
-        powerShell('''npm install
-grunt''')
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder RunWidgetClientTests() {
-    job.with {
-      steps {
-        powerShell('''cd feather-widgets
-npm install
-grunt''')
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder InstallFeatherPackages() {
-    job.with {
-      steps {
-        batchFile('''rd %LOCALAPPDATA%\\NuGet\\Cache /s /q
-.nuget\\NuGet.exe install ".\\Telerik.Sitefinity.Frontend\\packages.config" -source "\\\\telerik.com\\distributions\\OfficialReleases\\Sitefinity\\nuget\\feather;\\\\feather-ci\\C$\\FeatherFeed\\FeatherFeed\\Packages;http://feather-ci.cloudapp.net:8088/nuget/;https://www.nuget.org/api/v2/;http://nuget.sitefinity.com/nuget/"  -NonInteractive -RequireConsent -solutionDir ".\\ " -NoCache''')
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder RunUiTests(String command) {
-    job.with {
-      steps {
-        batchFile('C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command "' + command + ' -sitefinityPackage \'%SitefinityPackage%\' -buildNumber \'%JOB_NAME%_%BUILD_NUMBER%\' -category \'%Category%\' -sslEnabled $%SslEnabled% -multisiteEnabled $%EnableMultisite% -readOnlyMode $%ReadOnlyMode% -rerunFailedUITests $%RerunFailedUITests%"')
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder RunMvcUnitTests() {
-    job.with {
-      steps {
-        batchFile('''echo Enabling JustMock...
-
-SET JUSTMOCK_INSTANCE=1
-SET COR_ENABLE_PROFILING=1
-SET COR_PROFILER={B7ABE522-A68F-44F2-925B-81E7488E9EC0}
-
-echo Run unit tests...
-
-"C:\\Progra~2\\Microsoft Visual Studio 12.0\\Common7\\IDE\\MSTest.exe" /resultsfile:tests.trx /testcontainer:Tests\\Telerik.Sitefinity.Mvc.TestUnit\\bin\\Release\\Telerik.Sitefinity.Mvc.TestUnit.dll''')
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder PushMvcNuget() {
-    job.with {
-      steps {
-        batchFile('''.nuget\\nuget pack "Telerik.Sitefinity.Mvc\\Telerik.Sitefinity.Mvc.csproj" -Properties "Configuration=Release"  -Verbose
-.nuget\\nuget pack "Tests\\Telerik.Sitefinity.Mvc.TestUtilities\\Telerik.Sitefinity.Mvc.TestUtilities.csproj" -Properties "Configuration=Release"  -Verbose
-
-FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.*.nupkg') DO echo %%G
-@ECHO OFF
-FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.*.nupkg') DO .nuget\\nuget push %%G -s http://feather-ci.cloudapp.net:8088/ 1221C1AF59B2C
-
-FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg') DO echo %%G
-@ECHO OFF
-FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg') DO .nuget\\nuget push %%G -s http://feather-ci.cloudapp.net:8088/ 1221C1AF59B2C''')
-      }
-    }
-
-    return this
-  }
-
-  JobBuilder AddNodeJsFolderToPath(String folderPath) {
-    job.with {
-      wrappers {
-        nodejs(folderPath)
-      }
-    }
-
-    return this
-  }
+  // ### SOURCE CODE MANAGEMENT ###
 
   JobBuilder SetClientTestsGitSource(String branchToUse, String repository = 'Sitefinity/feather') {
     job.with {
@@ -285,6 +153,124 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
     return this
   }
 
+  // ### BUILD TRIGGERS ###
+
+  JobBuilder TriggerBuildOnGitPush() {
+    job.with {
+      triggers {
+        githubPush()
+      }
+    }
+
+    return this
+  }
+
+  // ### BUILD ENVIRONMENT ###
+
+  JobBuilder DeleteWorkspaceBeforeBuildStarts()
+  {
+    job.with {
+      wrappers {
+        preBuildCleanup()
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder AddNodeJsFolderToPath(String folderPath) {
+    job.with {
+      wrappers {
+        nodejs(folderPath)
+      }
+    }
+
+    return this
+  }
+
+  // ### BUILD ###
+
+  JobBuilder RunClientTests() {
+    job.with {
+      steps {
+        powerShell('''npm install
+grunt''')
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder RunWidgetClientTests() {
+    job.with {
+      steps {
+        powerShell('''cd feather-widgets
+npm install
+grunt''')
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder InstallFeatherPackages() {
+    job.with {
+      steps {
+        batchFile('''rd %LOCALAPPDATA%\\NuGet\\Cache /s /q
+.nuget\\NuGet.exe install ".\\Telerik.Sitefinity.Frontend\\packages.config" -source "\\\\telerik.com\\distributions\\OfficialReleases\\Sitefinity\\nuget\\feather;\\\\feather-ci\\C$\\FeatherFeed\\FeatherFeed\\Packages;http://feather-ci.cloudapp.net:8088/nuget/;https://www.nuget.org/api/v2/;http://nuget.sitefinity.com/nuget/"  -NonInteractive -RequireConsent -solutionDir ".\\ " -NoCache''')
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder RunUiTests(String command) {
+    job.with {
+      steps {
+        batchFile('C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command "' + command + ' -sitefinityPackage \'%SitefinityPackage%\' -buildNumber \'%JOB_NAME%_%BUILD_NUMBER%\' -category \'%Category%\' -sslEnabled $%SslEnabled% -multisiteEnabled $%EnableMultisite% -readOnlyMode $%ReadOnlyMode% -rerunFailedUITests $%RerunFailedUITests%"')
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder RunMvcUnitTests() {
+    job.with {
+      steps {
+        batchFile('''echo Enabling JustMock...
+
+SET JUSTMOCK_INSTANCE=1
+SET COR_ENABLE_PROFILING=1
+SET COR_PROFILER={B7ABE522-A68F-44F2-925B-81E7488E9EC0}
+
+echo Run unit tests...
+
+"C:\\Progra~2\\Microsoft Visual Studio 12.0\\Common7\\IDE\\MSTest.exe" /resultsfile:tests.trx /testcontainer:Tests\\Telerik.Sitefinity.Mvc.TestUnit\\bin\\Release\\Telerik.Sitefinity.Mvc.TestUnit.dll''')
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder PushMvcNuget() {
+    job.with {
+      steps {
+        batchFile('''.nuget\\nuget pack "Telerik.Sitefinity.Mvc\\Telerik.Sitefinity.Mvc.csproj" -Properties "Configuration=Release"  -Verbose
+.nuget\\nuget pack "Tests\\Telerik.Sitefinity.Mvc.TestUtilities\\Telerik.Sitefinity.Mvc.TestUtilities.csproj" -Properties "Configuration=Release"  -Verbose
+
+FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.*.nupkg') DO echo %%G
+@ECHO OFF
+FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.*.nupkg') DO .nuget\\nuget push %%G -s http://feather-ci.cloudapp.net:8088/ 1221C1AF59B2C
+
+FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg') DO echo %%G
+@ECHO OFF
+FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg') DO .nuget\\nuget push %%G -s http://feather-ci.cloudapp.net:8088/ 1221C1AF59B2C''')
+      }
+    }
+
+    return this
+  }
+
   JobBuilder MSBuildProject(String fileTobuild, String targets ='Rebuild') {
     job.with {
       steps {
@@ -322,6 +308,32 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
           'resultFile'('tests.trx')
           'cmdLineArgs'('/testsettings:Tests\\TestSettings.testsettings')
           'continueOnFail'('false')
+        }
+      }
+    }
+
+    return this
+  }
+
+  // ### POST-BUILD ACTIONS ###
+
+  JobBuilder DeleteWorkspaceWhenBuildIsDone()
+  {
+    job.with {
+      publishers {
+        wsCleanup()
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder InjectEnvironmentalVariable(String variableName, String variableValue)
+  {
+    job.with {
+      wrappers {
+        environmentVariables {
+          env(variableName, variableValue)
         }
       }
     }
@@ -404,4 +416,6 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
 
     return this
   }
+
+  // ### END ###
 }
