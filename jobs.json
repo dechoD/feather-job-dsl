@@ -69,7 +69,8 @@
       "category": "",
       "sslEnabled": true,
       "readOnlyMode": false,
-      "command": ".\\Tooling\\Feather\\IntegrationTests\\Feather.ps1"
+      "command": ".\\Tooling\\Feather\\IntegrationTests\\Feather.ps1",
+      "emails": "tihomir.petrov@telerik.com"
     }
   ]
 }
