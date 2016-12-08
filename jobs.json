@@ -42,7 +42,8 @@
       "enableMultisite": true,
       "readOnlyMode": false,
       "rerunFailedUITests": true,
-      "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1"
+      "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
+      "emails": "tihomir.petrov@telerik.com"
     },
     {
       "name": "Codebase_FeatherWidgetsUITests_DynamicModules_DSL",
@@ -54,8 +55,7 @@
       "enableMultisite": true,
       "readOnlyMode": false,
       "rerunFailedUITests": true,
-      "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
-      "emails": "decho.decchev@progress.com"
+      "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1"
     }
   ]
 }
