@@ -5,13 +5,15 @@
       "name": "Codebase_FeatherClientTest_DSL",
       "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
       "featherBranch": "*/CodeBaseIntegration",
-      "emails": ""
+      "emails": "",
+      "cronExpression": "H 22 * * 1-5"
     },
     {
       "name": "Master_FeatherClientTest_DSL",
       "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
       "featherBranch": "*/master",
-      "emails": ""
+      "emails": "",
+      "cronExpression": "@daily"
     }
   ],
   "clientWidgetJobs":
@@ -20,13 +22,15 @@
       "name": "Codebase_FeatherWidgetsClientTest_DSL",
       "description": "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
       "featherBranch": "*/CodeBaseIntegration",
-      "emails": ""
+      "emails": "",
+      "cronExpression": "@daily"
     },
     {
       "name": "Master_FeatherWidgetsClientTest_DSL",
       "description": "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
       "featherBranch": "*/master",
-      "emails": ""
+      "emails": "",
+      "cronExpression": "@daily"
     }
   ]
 }

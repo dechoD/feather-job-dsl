@@ -8,6 +8,7 @@ class BaseJobBuilder {
   String name
   String description
   String emails
+  String cronExpression
 
   Job build(DslFactory factory) {
     factory.job(name) {
@@ -16,6 +17,23 @@ class BaseJobBuilder {
       publishers {
         mailer(this.emails, false, true)
       }
+      triggers {
+        cron(this.cronExpression)
+      }
+
+      //if (this.cronExpression != null) {
+      //  triggers {
+      //    cron(this.cronExpression)
+      //  }
+      //}
     }
+
+    //if (this.cronExpression != null) {
+    //  factory.job(name) {
+    //    triggers {
+    //      cron(cronExpression)
+    //    }
+    //  }
+    //}
   }
 }

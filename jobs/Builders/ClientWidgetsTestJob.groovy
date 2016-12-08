@@ -12,12 +12,14 @@ class ClientWidgetsTestJob {
   String description
   String emails
   String featherBranch
+  String cronExpression
 
   Job build(DslFactory factory) {
     Job baseJob = new ClientTestBase(
       name: this.name,
       description: this.description,
-      emails: this.emails
+      emails: this.emails,
+      cronExpression: this.cronExpression
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)

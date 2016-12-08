@@ -8,7 +8,8 @@ jobs.clientJobs.each {
     name: it.name,
     description: it.description,
     featherBranch: it.featherBranch,
-    emails: it.emails).build(this)
+    emails: it.emails,
+    cronExpression: it.cronExpression).build(this)
 }
 
 jobs.clientWidgetJobs.each {
@@ -16,7 +17,8 @@ jobs.clientWidgetJobs.each {
     name: it.name,
     description: it.description,
     featherBranch: it.featherBranch,
-    emails: it.emails).build(this)
+    emails: it.emails,
+    cronExpression: it.cronExpression).build(this)
 }
 
 //new ClientTestJob(
