@@ -141,7 +141,7 @@ class JobBuilder {
             github('Sitefinity/Tooling')
             credentials('c035286c-2a54-4bd1-8664-8778beb64344')
           }
-          branch('*/tooling-refactoring')
+          branch('*/master')
           extensions {
             relativeTargetDirectory('Tooling')
             wipeOutWorkspace()
