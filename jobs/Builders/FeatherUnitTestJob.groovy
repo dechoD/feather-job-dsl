@@ -24,11 +24,11 @@ class FeatherUnitTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetClientTestsGitSource(featherBranch)
+        .SetClientTestsGitSource(this.featherBranch)
         .MSBuildProject('.nuget\\NuGet.targets', 'CheckPrerequisites')
         .InstallFeatherPackages()
         .MSBuildProject('Feather.sln')
-        .RunUnitTestsWithMSTest(testFiles)
+        .RunUnitTestsWithMSTest(this.testFiles)
         .RunWindowsExe('CodeCoverageConverter.exe', '-source:TestResults\\In\\FEATHER-CI\\data.coverage -dest:data.xml', 'true')
         .PublishEmmaCoverageReport('data.xml')
         .GetJob()
