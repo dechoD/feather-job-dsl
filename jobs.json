@@ -57,5 +57,19 @@
       "rerunFailedUITests": true,
       "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1"
     }
+  ],
+  "integrationJobs":
+  [
+    {
+      "name": "Internal_Master_FeatherIntegrationTests",
+      "description": "Feather integration tests ran against Sitefinity internal release branch.",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
+      "testRunnerPackage": "Telerik.WebTestRunner.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "command": ".\\Tooling\\Feather\\IntegrationTests\\Feather.ps1"
+    }
   ]
 }

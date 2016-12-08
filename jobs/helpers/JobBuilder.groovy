@@ -40,6 +40,21 @@ class JobBuilder {
     return this
   }
 
+  JobBuilder SetIntegrationTestParameters(String branch, String sitefinityPackage, String testRunnerPackage, String category, Boolean sslEnabled, Boolean readOnlyMode) {
+    job.with {
+      parameters {
+        stringParam("Branch", branch)
+        stringParam("SitefinityPackage", sitefinityPackage)
+        stringParam("TestRunnerPackage", testRunnerPackage)
+        stringParam("Categories", category)
+        booleanParam("SslEnabled", sslEnabled)
+        booleanParam("ReadOnlyMode", readOnlyMode)
+      }
+    }
+
+    return this
+  }
+
   JobBuilder ExecuteConcurentBuilds() {
     job.with {
       concurrentBuild()

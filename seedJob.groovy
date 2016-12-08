@@ -36,6 +36,20 @@ jobs.uiJobs.each {
     emails: it.emails).build(this)
 }
 
+jobs.integrationJobs.each {
+  new IntegrationTestJob(
+    name: it.name,
+    description: it.description,
+    branch: it.branch,
+    sitefinityPackage: it.sitefinityPackage,
+    testRunnerPackage: it.testRunnerPackage,
+    category: it.category,
+    sslEnabled: it.sslEnabled,
+    readOnlyMode: it.readOnlyMode,
+    command: it.command,
+    emails: it.emails).build(this)
+}
+
 //new ClientTestJob(
 //  name: jobs.name,
 //  description: "Runs client side tests for Feather projects and checks code coverage and jshint",
