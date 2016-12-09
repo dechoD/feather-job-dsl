@@ -6,7 +6,7 @@ import javaposse.jobdsl.dsl.*
 
 class BaseJobBuilder {
   String name
-  String description
+  String description = ""
   String emails
   String cronExpression
 

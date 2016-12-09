@@ -91,7 +91,6 @@
     },
     {
       "name": "Internal_Master_FeatherWidgetsIntegrationTests_DynamicWidgets_DSL",
-      "description": "",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
       "category": "DynamicWidgets",
