@@ -30,19 +30,6 @@
   "uiJobs":
   [
     {
-      "name": "Codebase_FeatherWidgetsUITests_Forms_DSL",
-      "description": "The Frontend Widgets for the Sitefinity Feather project.",
-      "branch": "CodeBaseIntegration",
-      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
-      "category": "Forms",
-      "sslEnabled": false,
-      "enableMultisite": true,
-      "readOnlyMode": false,
-      "rerunFailedUITests": true,
-      "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
-      "emails": "tihomir.petrov@telerik.com"
-    },
-    {
       "name": "Codebase_FeatherWidgetsUITests_DynamicModules_DSL",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "CodeBaseIntegration",
