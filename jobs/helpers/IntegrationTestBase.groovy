@@ -26,6 +26,7 @@ class IntegrationTestBase {
 
       def jobBuilder = new JobBuilder(baseJob)
       .SetIntegrationTestParameters(this.branch, this.sitefinityPackage, this.testRunnerPackage, this.category, this.sslEnabled, this.readOnlyMode)
+      .SetIntegrationTestsGitSources('$Branch')
       .ExecuteConcurentBuilds()
       .RestrictWhereThisProjectCanBeRun('IntegrationTests')
       .DeleteWorkspaceBeforeBuildStarts()

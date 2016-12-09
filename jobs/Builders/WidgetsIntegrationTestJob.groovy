@@ -34,6 +34,7 @@ class WidgetsIntegrationTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
+        .RunIntegrationTests('.\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1')      
         .GetJob()
     }
   }
