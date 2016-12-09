@@ -73,7 +73,7 @@
       "emails": "tihomir.petrov@telerik.com"
     },
     {
-      "name": "Master_FeatherIntegrationTests",
+      "name": "Master_FeatherIntegrationTests_DSL",
       "description": "Feather integration tests ran against Sitefinity internal release branch.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
@@ -83,6 +83,20 @@
       "readOnlyMode": false,
       "command": ".\\Tooling\\Feather\\IntegrationTests\\Feather.ps1",
       "emails": "tihomir.petrov@telerik.com"
+    }
+  ],
+  "widgetIntegrationJobs":
+  [
+    {
+      "name": "Codebase_FeatherWidgetsIntegrationTests_DSL",
+      "description": "The Frontend Widgets for the Sitefinity Feather project.",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
+      "testRunnerPackage": "Telerik.WebTestRunner.zip",
+      "category": "Forms,Blogs,ContentBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "command": ".\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1"
     }
   ]
 }

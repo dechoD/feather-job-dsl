@@ -50,6 +50,20 @@ jobs.integrationJobs.each {
     emails: it.emails).build(this)
 }
 
+jobs.widgetIntegrationJobs.each {
+  new WidgetsIntegrationTestJob(
+    name: it.name,
+    description: it.description,
+    branch: it.branch,
+    sitefinityPackage: it.sitefinityPackage,
+    testRunnerPackage: it.testRunnerPackage,
+    category: it.category,
+    sslEnabled: it.sslEnabled,
+    readOnlyMode: it.readOnlyMode,
+    command: it.command,
+    emails: it.emails).build(this)
+}
+
 //new ClientTestJob(
 //  name: jobs.name,
 //  description: "Runs client side tests for Feather projects and checks code coverage and jshint",
