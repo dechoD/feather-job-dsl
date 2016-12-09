@@ -17,6 +17,7 @@ class WidgetsIntegrationTestJob {
   Boolean readOnlyMode
   String command
   String emails
+  String cronExpression
 
   Job build(DslFactory factory) {
     Job baseJob = new IntegrationTestBase(
@@ -28,13 +29,14 @@ class WidgetsIntegrationTestJob {
       testRunnerPackage: this.testRunnerPackage,
       category: this.category,
       sslEnabled: this.sslEnabled,
-      readOnlyMode: this.readOnlyMode
+      readOnlyMode: this.readOnlyMode,
+      cronExpression: this.cronExpression
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .RunIntegrationTests('.\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1')      
+        .RunIntegrationTests('.\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1')
         .GetJob()
     }
   }

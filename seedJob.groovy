@@ -33,7 +33,8 @@ jobs.uiJobs.each {
     readOnlyMode: it.readOnlyMode,
     rerunFailedUITests: it.rerunFailedUITests,
     command: it.command,
-    emails: it.emails).build(this)
+    emails: it.emails,
+    cronExpression: it.cronExpression).build(this)
 }
 
 jobs.integrationJobs.each {
@@ -47,7 +48,8 @@ jobs.integrationJobs.each {
     sslEnabled: it.sslEnabled,
     readOnlyMode: it.readOnlyMode,
     command: it.command,
-    emails: it.emails).build(this)
+    emails: it.emails,
+    cronExpression: it.cronExpression).build(this)
 }
 
 jobs.widgetIntegrationJobs.each {
@@ -61,7 +63,8 @@ jobs.widgetIntegrationJobs.each {
     sslEnabled: it.sslEnabled,
     readOnlyMode: it.readOnlyMode,
     command: it.command,
-    emails: it.emails).build(this)
+    emails: it.emails,
+    cronExpression: it.cronExpression).build(this)
 }
 
 //new ClientTestJob(

@@ -16,12 +16,14 @@ class IntegrationTestBase {
   Boolean sslEnabled
   Boolean readOnlyMode
   String emails
+  String cronExpression
 
   Job build(DslFactory factory) {
     Job baseJob = new BaseJobBuilder(
       name: this.name,
       description: this.description,
-      emails: this.emails
+      emails: this.emails,
+      cronExpression: this.cronExpression
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)

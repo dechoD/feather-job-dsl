@@ -9,8 +9,7 @@
     {
       "name": "Master_FeatherClientTest_DSL",
       "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
-      "featherBranch": "*/master",
-      "cronExpression": "@daily"
+      "featherBranch": "*/master"
     }
   ],
   "clientWidgetJobs":
@@ -19,15 +18,13 @@
       "name": "Codebase_FeatherWidgetsClientTest_DSL",
       "description": "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
       "featherBranch": "*/CodeBaseIntegration",
-      "emails": "",
-      "cronExpression": "@daily"
+      "emails": ""
     },
     {
       "name": "Master_FeatherWidgetsClientTest_DSL",
       "description": "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
       "featherBranch": "*/master",
-      "emails": "",
-      "cronExpression": "@daily"
+      "emails": ""
     }
   ],
   "uiJobs":
@@ -93,7 +90,8 @@
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
       "testRunnerPackage": "Telerik.WebTestRunner.zip",
-      "category": "Forms,Blogs,ContentBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
+      "category": "Forms,Blogs,Conte
+      ntBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
       "sslEnabled": true,
       "readOnlyMode": false,
       "command": ".\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1"

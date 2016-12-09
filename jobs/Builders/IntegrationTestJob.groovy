@@ -17,6 +17,7 @@ class IntegrationTestJob {
   Boolean readOnlyMode
   String command
   String emails
+  String cronExpression
 
   Job build(DslFactory factory) {
     Job baseJob = new IntegrationTestBase(
@@ -28,7 +29,8 @@ class IntegrationTestJob {
       testRunnerPackage: this.testRunnerPackage,
       category: this.category,
       sslEnabled: this.sslEnabled,
-      readOnlyMode: this.readOnlyMode
+      readOnlyMode: this.readOnlyMode,
+      cronExpression: this.cronExpression
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)
