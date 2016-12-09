@@ -34,6 +34,8 @@ class IntegrationTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
+        .SetIntegrationTestsGitSources('$Branch')
+        .RunIntegrationTests('.\\Tooling\\Feather\\IntegrationTests\\Feather.ps1')
         .GetJob()
     }
   }

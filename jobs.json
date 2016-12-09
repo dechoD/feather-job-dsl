@@ -61,7 +61,7 @@
   "integrationJobs":
   [
     {
-      "name": "Internal_Master_FeatherIntegrationTests",
+      "name": "Internal_Master_FeatherIntegrationTests_DSL",
       "description": "Feather integration tests ran against Sitefinity internal release branch.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",

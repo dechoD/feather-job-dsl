@@ -168,6 +168,70 @@ class JobBuilder {
     return this
   }
 
+  JobBuilder SetIntegrationTestsGitSources(String branchToUse) {
+    job.with {
+      multiscm {
+        git {
+          remote {
+            github('Sitefinity/feather')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('Feather')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/feather-packages')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('FeatherPackages')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/Tooling')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+          }
+          branch('*/master')
+          extensions {
+            relativeTargetDirectory('Tooling')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/sitefinity-mvc')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('sitefinity-mvc')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/feather-widgets')
+            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('FeatherWidgets')
+            wipeOutWorkspace()
+          }
+        }
+      }
+    }
+
+    return this
+  }
+
   // ### BUILD TRIGGERS ###
 
   JobBuilder TriggerBuildOnGitPush() {
@@ -323,6 +387,18 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
           'resultFile'('tests.trx')
           'cmdLineArgs'('/testsettings:Tests\\TestSettings.testsettings')
           'continueOnFail'('false')
+        }
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder RunIntegrationTests(String command) {
+    job.with {
+      job.with {
+        steps {
+          batchFile("%windir%\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command \"${command} -sitefinityPackage '%SitefinityPackage%' -testRunnerPackage '%TestRunnerPackage%' -buildNumber '%JOB_NAME%_%BUILD_NUMBER%' -categories '%Categories%' -sslEnabled \$%SslEnabled% -readOnlyMode \$%ReadOnlyMode%\"")
         }
       }
     }
