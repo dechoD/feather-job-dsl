@@ -71,6 +71,18 @@
       "readOnlyMode": false,
       "command": ".\\Tooling\\Feather\\IntegrationTests\\Feather.ps1",
       "emails": "tihomir.petrov@telerik.com"
+    },
+    {
+      "name": "Master_FeatherIntegrationTests",
+      "description": "Feather integration tests ran against Sitefinity internal release branch.",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
+      "testRunnerPackage": "Telerik.WebTestRunner.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "command": ".\\Tooling\\Feather\\IntegrationTests\\Feather.ps1",
+      "emails": "tihomir.petrov@telerik.com"
     }
   ]
 }
