@@ -11,7 +11,7 @@ class IntegrationTestBase {
   String description
   String branch
   String sitefinityPackage
-  String testRunnerPackage
+  String testRunnerPackage = "Telerik.WebTestRunner.zip"
   String category
   Boolean sslEnabled
   Boolean readOnlyMode

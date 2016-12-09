@@ -15,7 +15,7 @@ class WidgetsIntegrationTestJob {
   String category
   Boolean sslEnabled
   Boolean readOnlyMode
-  String command
+  String command = ".\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1"
   String emails
   String cronExpression
 
@@ -36,7 +36,7 @@ class WidgetsIntegrationTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .RunIntegrationTests('.\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1')
+        .RunIntegrationTests(this.command)
         .GetJob()
     }
   }

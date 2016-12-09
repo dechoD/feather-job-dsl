@@ -62,11 +62,9 @@
       "description": "Feather integration tests ran against Sitefinity internal release branch.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
-      "testRunnerPackage": "Telerik.WebTestRunner.zip",
       "category": "",
       "sslEnabled": true,
       "readOnlyMode": false,
-      "command": ".\\Tooling\\Feather\\IntegrationTests\\Feather.ps1",
       "emails": "tihomir.petrov@telerik.com"
     },
     {
@@ -74,11 +72,9 @@
       "description": "Feather integration tests ran against Sitefinity internal release branch.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
-      "testRunnerPackage": "Telerik.WebTestRunner.zip",
       "category": "",
       "sslEnabled": true,
       "readOnlyMode": false,
-      "command": ".\\Tooling\\Feather\\IntegrationTests\\Feather.ps1",
       "emails": "tihomir.petrov@telerik.com"
     }
   ],
@@ -89,23 +85,18 @@
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
-      "testRunnerPackage": "Telerik.WebTestRunner.zip",
-      "category": "Forms,Blogs,Conte
-      ntBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
+      "category": "Forms,Blogs,ContentBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
       "sslEnabled": true,
       "readOnlyMode": false,
-      "command": ".\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1"
     },
     {
       "name": "Internal_Master_FeatherWidgetsIntegrationTests_DynamicWidgets_DSL",
       "description": "",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
-      "testRunnerPackage": "Telerik.WebTestRunner.zip",
       "category": "DynamicWidgets",
       "sslEnabled": true,
-      "readOnlyMode": false,
-      "command": ".\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1"
+      "readOnlyMode": false
     }
   ]
 }
