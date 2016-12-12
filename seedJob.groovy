@@ -40,6 +40,15 @@ jobs.widgetUnitJobs.each {
     cronExpression: it.cronExpression).build(this)
 }
 
+jobs.mvcUnitJobs.each {
+  new MvcUnitTestJob(
+    name: it.name,
+    description: it.description,
+    featherBranch: it.featherBranch,
+    emails: it.emails,
+    cronExpression: it.cronExpression).build(this)
+}
+
 jobs.uiJobs.each {
   new UiTestJob(
     name: it.name,

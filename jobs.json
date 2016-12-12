@@ -53,5 +53,16 @@
       "featherBranch": "*/master",
       "emails": "tihomir.petrov@telerik.com"
     }
+  ],
+  "mvcUnitJobs":
+  [
+    {
+      "name": "CodeBase_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+      "featherBranch": "*/CodeBaseIntegration"
+    },
+    {
+      "name": "Master_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+      "featherBranch": "*/master"
+    }
   ]
 }
