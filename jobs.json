@@ -57,11 +57,11 @@
   "mvcUnitJobs":
   [
     {
-      "name": "CodeBase_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+      "name": "CodeBase_Telerik.Sitefinity.Mvc_UnitTests",
       "featherBranch": "*/CodeBaseIntegration"
     },
     {
-      "name": "Master_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+      "name": "Master_Telerik.Sitefinity.Mvc_UnitTests",
       "featherBranch": "*/master"
     }
   ]
