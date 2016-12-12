@@ -2,7 +2,7 @@
   "clientJobs":
   [
     {
-      "name": "Codebase_FeatherClientTest_DSL",
+      "name": "Codebase_FeatherClientTest",
       "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
       "featherBranch": "*/CodeBaseIntegration"
     }
