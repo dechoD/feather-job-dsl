@@ -68,7 +68,7 @@
   "integrationJobs":
   [
     {
-      "name": "Codebase_FeatherIntegrationTests_DSL",
+      "name": "Codebase_FeatherIntegrationTests",
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
       "testRunnerPackage": "Telerik.WebTestRunner.zip",
@@ -79,7 +79,7 @@
       "cronExpression": "H 22 * * 1-5"
     },
     {
-      "name": "Codebase_FeatherIntegrationTests_ReadOnly_DSL",
+      "name": "Codebase_FeatherIntegrationTests_ReadOnly",
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
       "testRunnerPackage": "Telerik.WebTestRunner.zip",
