@@ -30,12 +30,13 @@
   "unitJobs":
   [
     {
-      "name": "Codebase_FeatherUnitTests_DSL",
+      "name": "Codebase_FeatherUnitTests",
       "featherBranch": "*/CodeBaseIntegration"
     },
     {
-      "name": "Master_FeatherUnitTests_DSL",
-      "featherBranch": "*/master"
+      "name": "Master_FeatherUnitTests",
+      "featherBranch": "*/master",
+      "emails": "tihomir.petrov@telerik.com"
     }
   ]
 }
