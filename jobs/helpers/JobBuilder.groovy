@@ -6,6 +6,8 @@ import javaposse.jobdsl.dsl.Job
 class JobBuilder {
   def job
 
+  def toolingJenkinsId = 'c035286c-2a54-4bd1-8664-8778beb64344'
+
   JobBuilder (FreeStyleJob _job) {
     job = _job
   }
@@ -72,7 +74,7 @@ class JobBuilder {
           branch(branchToUse)
           remote {
             github(repository, 'https')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           extensions {
             wipeOutWorkspace()
@@ -90,7 +92,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/feather')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch(branchToUse)
           extensions {
@@ -101,7 +103,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/feather-widgets')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch(branchToUse)
           extensions {
@@ -121,7 +123,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/feather')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch(branchToUse)
           extensions {
@@ -132,7 +134,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/feather-widgets')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch(branchToUse)
           extensions {
@@ -143,7 +145,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/feather-packages')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch(branchToUse)
           extensions {
@@ -154,7 +156,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/Tooling')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch('*/master')
           extensions {
@@ -174,7 +176,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/feather')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch(branchToUse)
           extensions {
@@ -185,7 +187,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/feather-packages')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch(branchToUse)
           extensions {
@@ -196,7 +198,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/Tooling')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch('*/master')
           extensions {
@@ -207,7 +209,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/sitefinity-mvc')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch(branchToUse)
           extensions {
@@ -218,7 +220,7 @@ class JobBuilder {
         git {
           remote {
             github('Sitefinity/feather-widgets')
-            credentials('c035286c-2a54-4bd1-8664-8778beb64344')
+            credentials(this.toolingJenkinsId)
           }
           branch(branchToUse)
           extensions {
