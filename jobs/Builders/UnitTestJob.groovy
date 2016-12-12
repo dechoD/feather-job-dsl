@@ -12,8 +12,8 @@ class UnitTestJob {
   String description
   String emails
   String featherBranch
-  String testFiles = "Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll"
   String cronExpression
+  String testFiles
 
   Job build(DslFactory factory) {
     Job baseJob = new UnitTestBase(
@@ -22,6 +22,10 @@ class UnitTestJob {
       emails: this.emails,
       cronExpression: this.cronExpression
       ).build(factory)
+
+      if (this.testFiles == null) {
+        this.testFiles = 'Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll'
+      }
 
       def jobBuilder = new JobBuilder(baseJob)
 
