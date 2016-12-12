@@ -13,6 +13,7 @@ class WidgetsUnitTestJob {
   String emails
   String featherBranch
   String cronExpression
+  String downstreamProject
 
   Job build(DslFactory factory) {
     Job baseJob = new UnitTestBase(
@@ -24,13 +25,16 @@ class WidgetsUnitTestJob {
 
       def jobBuilder = new JobBuilder(baseJob)
 
+      if (this.downstreamProject != null) {
+        jobBuilder.BuildOtherProject(this.downstreamProject, 'SUCCESS')
+      }
+
       jobBuilder
         .SetClientTestsGitSource(featherBranch, 'Sitefinity/feather-widgets')
         .MSBuildProject('FeatherWidgets.sln')
         .RunUnitTestsWithMSTest('Tests\\FeatherWidgets.TestUnit\\bin\\Release\\FeatherWidgets.TestUnit.dll')
         .RunWindowsExe('CodeCoverageConverter.exe', '-source:TestResults\\In\\FEATHER-CI\\data.coverage -dest:data.xml', 'true')
         .PublishEmmaCoverageReport('data.xml')
-        .BuildOtherProject('Codebase_FeatherWidgetsClientTest', 'SUCCESS')
         .GetJob()
     }
   }

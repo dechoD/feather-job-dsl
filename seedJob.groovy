@@ -30,6 +30,16 @@ jobs.unitJobs.each {
     cronExpression: it.cronExpression).build(this)
 }
 
+jobs.widgetUnitJobs.each {
+  new WidgetsUnitTestJob(
+    name: it.name,
+    description: it.description,
+    featherBranch: it.featherBranch,
+    emails: it.emails,
+    downstreamProject: it.downstreamProject,
+    cronExpression: it.cronExpression).build(this)
+}
+
 jobs.uiJobs.each {
   new UiTestJob(
     name: it.name,
