@@ -96,7 +96,7 @@ class JobBuilder {
           }
           branch(branchToUse)
           extensions {
-            relativeTargetDirectory('Feather')
+            relativeTargetDirectory('feather')
             wipeOutWorkspace()
           }
         }

@@ -16,12 +16,12 @@
   "clientWidgetJobs":
   [
     {
-      "name": "Codebase_FeatherWidgetsClientTest_DSL",
+      "name": "Codebase_FeatherWidgetsClientTest",
       "description": "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
       "featherBranch": "*/CodeBaseIntegration"
     },
     {
-      "name": "Master_FeatherWidgetsClientTest_DSL",
+      "name": "Master_FeatherWidgetsClientTest",
       "description": "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
       "featherBranch": "*/master",
       "emails": "tihomir.petrov@telerik.com"
