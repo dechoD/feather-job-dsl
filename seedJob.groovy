@@ -27,8 +27,7 @@ jobs.unitJobs.each {
     description: it.description,
     featherBranch: it.featherBranch,
     emails: it.emails,
-    cronExpression: it.cronExpression,
-    testFiles: it.testFiles).build(this)
+    cronExpression: it.cronExpression).build(this)
 }
 
 jobs.uiJobs.each {
