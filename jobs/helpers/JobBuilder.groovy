@@ -208,6 +208,59 @@ class JobBuilder {
         }
         git {
           remote {
+            github('Sitefinity/feather-widgets')
+            credentials(this.toolingJenkinsId)
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('FeatherWidgets')
+            wipeOutWorkspace()
+          }
+        }
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder SetMvcIntegrationTestsGitSources(String branchToUse) {
+    job.with {
+      multiscm {
+        git {
+          remote {
+            github('Sitefinity/feather')
+            credentials(this.toolingJenkinsId)
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('Feather')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/feather-packages')
+            credentials(this.toolingJenkinsId)
+          }
+          branch(branchToUse)
+          extensions {
+            relativeTargetDirectory('FeatherPackages')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/Tooling')
+            credentials(this.toolingJenkinsId)
+          }
+          branch('*/master')
+          extensions {
+            relativeTargetDirectory('Tooling')
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
             github('Sitefinity/sitefinity-mvc')
             credentials(this.toolingJenkinsId)
           }
