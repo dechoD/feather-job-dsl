@@ -7,7 +7,7 @@
       "featherBranch": "*/CodeBaseIntegration"
     },
     {
-      "name": "Master_FeatherClientTest_DSL",
+      "name": "Master_FeatherClientTest",
       "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
       "featherBranch": "*/master",
       "emails": "tihomir.petrov@telerik.com"
