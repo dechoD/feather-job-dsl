@@ -7,11 +7,12 @@ import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.*
 
-class FeatherWidgetsUnitTestJob {
+class UnitTestJob {
   String name
   String description
   String emails
   String featherBranch
+  String testFiles = "Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll"
   String cronExpression
 
   Job build(DslFactory factory) {
@@ -25,12 +26,13 @@ class FeatherWidgetsUnitTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetClientTestsGitSource(featherBranch, 'Sitefinity/feather-widgets')
-        .MSBuildProject('FeatherWidgets.sln')
-        .RunUnitTestsWithMSTest('Tests\\FeatherWidgets.TestUnit\\bin\\Release\\FeatherWidgets.TestUnit.dll')
+        .SetClientTestsGitSource(this.featherBranch)
+        .MSBuildProject('.nuget\\NuGet.targets', 'CheckPrerequisites')
+        .InstallFeatherPackages()
+        .MSBuildProject('Feather.sln')
+        .RunUnitTestsWithMSTest(this.testFiles)
         .RunWindowsExe('CodeCoverageConverter.exe', '-source:TestResults\\In\\FEATHER-CI\\data.coverage -dest:data.xml', 'true')
         .PublishEmmaCoverageReport('data.xml')
-        .BuildOtherProject('Codebase_FeatherWidgetsClientTest', 'SUCCESS')
         .GetJob()
     }
   }
