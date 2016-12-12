@@ -467,7 +467,10 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
   {
     job.with {
       publishers {
-        wsCleanup()
+        wsCleanup {
+          excludePattern('*TestResults*/**')
+          deleteDirectories(true)
+        }
       }
     }
 
