@@ -9,7 +9,7 @@ class JsonReader {
         //Resolves the json file when executed in the context of a Jenkins job
         if(!inputFile.exists()){
             def build = Thread.currentThread().executable
-            inputFile = new File(build.workspace.toString() + fileName);
+            inputFile = new File(build.workspace.toString() + "\\" + fileName);
         }
 
         def jsonFile = new JsonSlurper().parseText(inputFile.text)
