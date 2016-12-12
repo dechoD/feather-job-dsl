@@ -30,7 +30,7 @@ class UnitTestJob {
         .MSBuildProject('.nuget\\NuGet.targets', 'CheckPrerequisites')
         .InstallFeatherPackages()
         .MSBuildProject('Feather.sln')
-        .RunUnitTestsWithMSTest(this.testFiles)
+        .RunUnitTestsWithMSTest("Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll")
         .RunWindowsExe('CodeCoverageConverter.exe', '-source:TestResults\\In\\FEATHER-CI\\data.coverage -dest:data.xml', 'true')
         .PublishEmmaCoverageReport('data.xml')
         .GetJob()
