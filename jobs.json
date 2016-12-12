@@ -5,6 +5,12 @@
       "name": "Codebase_FeatherClientTest",
       "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
       "featherBranch": "*/CodeBaseIntegration"
+    },
+    {
+      "name": "Master_FeatherClientTest_DSL",
+      "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
+      "featherBranch": "*/master",
+      "emails": "tihomir.petrov@telerik.com"
     }
   ]
 }
