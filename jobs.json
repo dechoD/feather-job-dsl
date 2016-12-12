@@ -64,5 +64,30 @@
       "name": "Master_Telerik.Sitefinity.Mvc_UnitTests",
       "featherBranch": "*/master"
     }
+  ],
+  "integrationJobs":
+  [
+    {
+      "name": "Codebase_FeatherIntegrationTests_DSL",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
+      "testRunnerPackage": "Telerik.WebTestRunner.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "emails": "tihomir.petrov@telerik.com",
+      "cronExpression": "H 22 * * 1-5"
+    },
+    {
+      "name": "Codebase_FeatherIntegrationTests_ReadOnly_DSL",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
+      "testRunnerPackage": "Telerik.WebTestRunner.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": true,
+      "emails": "tihomir.petrov@telerik.com",
+      "cronExpression": "H 22 * * 1-5"
+    }
   ]
 }
