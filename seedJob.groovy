@@ -75,7 +75,6 @@ jobs.integrationJobs.each {
     category: it.category,
     sslEnabled: it.sslEnabled,
     readOnlyMode: it.readOnlyMode,
-    command: it.command,
     emails: it.emails,
     cronExpression: it.cronExpression).build(this)
 }
@@ -90,7 +89,6 @@ jobs.widgetIntegrationJobs.each {
     category: it.category,
     sslEnabled: it.sslEnabled,
     readOnlyMode: it.readOnlyMode,
-    command: it.command,
     emails: it.emails,
     cronExpression: it.cronExpression).build(this)
 }

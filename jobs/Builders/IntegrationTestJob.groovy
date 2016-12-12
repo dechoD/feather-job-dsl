@@ -15,9 +15,10 @@ class IntegrationTestJob {
   String category
   Boolean sslEnabled
   Boolean readOnlyMode
-  String command = '.\\Tooling\\Feather\\IntegrationTests\\Feather.ps1'
   String emails
   String cronExpression
+
+  String command = '.\\Tooling\\Feather\\IntegrationTests\\Feather.ps1'
 
   Job build(DslFactory factory) {
     Job baseJob = new IntegrationTestBase(
