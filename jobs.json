@@ -42,13 +42,13 @@
   "widgetUnitJobs":
   [
     {
-      "name": "Codebase_FeatherWidgetsUnitTests_DSL",
+      "name": "Codebase_FeatherWidgetsUnitTests",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "featherBranch": "*/CodeBaseIntegration",
       "downstreamProject": "Codebase_FeatherWidgetsClientTest"
     },
     {
-      "name": "Master_FeatherWidgetsUnitTests_DSL",
+      "name": "Master_FeatherWidgetsUnitTests",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "featherBranch": "*/master",
       "emails": "tihomir.petrov@telerik.com"
