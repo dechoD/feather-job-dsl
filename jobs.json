@@ -99,7 +99,28 @@
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
       "category": "Forms,Blogs,ContentBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
       "sslEnabled": true,
-      "readOnlyMode": false
+      "readOnlyMode": false,
+      "cronExpression": "H 21 * * 1-5"
+    },
+    {
+      "name": "Codebase_FeatherWidgets_DynamicModules_IntegrationTests_DSL",
+      "description": "The Frontend Widgets for the Sitefinity Feather project.",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
+      "category": "DynamicWidgets",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "cronExpression": "H 22 * * 1-5"
+    },
+    {
+      "name": "Codebase_FeatherWidgetsIntegrationTests_ReadOnly_DSL",
+      "description": "The Frontend Widgets for the Sitefinity Feather project.",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
+      "category": "Forms,Blogs,ContentBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
+      "sslEnabled": true,
+      "readOnlyMode": true,
+      "cronExpression": "H 21 * * 1-5"
     }
   ]
 }
