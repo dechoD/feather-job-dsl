@@ -93,7 +93,7 @@
   "widgetIntegrationJobs":
   [
     {
-      "name": "Codebase_FeatherWidgetsIntegrationTests_DSL",
+      "name": "Codebase_FeatherWidgetsIntegrationTests",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
@@ -103,7 +103,7 @@
       "cronExpression": "H 21 * * 1-5"
     },
     {
-      "name": "Codebase_FeatherWidgets_DynamicModules_IntegrationTests_DSL",
+      "name": "Codebase_FeatherWidgets_DynamicModules_IntegrationTests",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
@@ -113,7 +113,7 @@
       "cronExpression": "H 22 * * 1-5"
     },
     {
-      "name": "Codebase_FeatherWidgetsIntegrationTests_ReadOnly_DSL",
+      "name": "Codebase_FeatherWidgetsIntegrationTests_ReadOnly",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
