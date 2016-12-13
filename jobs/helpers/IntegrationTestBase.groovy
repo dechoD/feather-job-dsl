@@ -11,7 +11,7 @@ class IntegrationTestBase {
   String description
   String branch
   String sitefinityPackage
-  String testRunnerPackage = "Telerik.WebTestRunner.zip"
+  String testRunnerPackage
   String category
   Boolean sslEnabled
   Boolean readOnlyMode
@@ -26,9 +26,12 @@ class IntegrationTestBase {
       cronExpression: this.cronExpression
       ).build(factory)
 
+      if (this.testRunnerPackage == null) {
+        this.testRunnerPackage = "Telerik.WebTestRunner.zip"
+      }
+
       def jobBuilder = new JobBuilder(baseJob)
       .SetIntegrationTestParameters(this.branch, this.sitefinityPackage, this.testRunnerPackage, this.category, this.sslEnabled, this.readOnlyMode)
-      .SetIntegrationTestsGitSources('$Branch')
       .ExecuteConcurentBuilds()
       .RestrictWhereThisProjectCanBeRun('IntegrationTests')
       .DeleteWorkspaceBeforeBuildStarts()
