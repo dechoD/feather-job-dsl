@@ -122,5 +122,20 @@
       "readOnlyMode": true,
       "cronExpression": "H 21 * * 1-5"
     }
-  ]
-}
+  ],
+  "uiJobs":
+  [
+    {
+      "name": "Codebase_FeatherUITests_DSL",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
+      "category": "PagesAndContent",
+      "sslEnabled": false,
+      "enableMultisite": false,
+      "readOnlyMode": false,
+      "rerunFailedUITests": true,
+      "command": ".\\Tooling\\Feather\\UITests\\Feather.ps1",
+      "emails": "tihomir.petrov@telerik.com",
+      "cronExpression": "H 02 * * 1-5"
+  }
+],
