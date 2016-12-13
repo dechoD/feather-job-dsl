@@ -1,13 +1,12 @@
-package jobs.builders
+package jobs.helpers
 
 import jobs.helpers.BaseJobBuilder
 import jobs.helpers.JobBuilder
-import jobs.helpers.UiTestBase
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.*
 
-class UiTestJob {
+class UiTestBase {
   String name
   String description
   String branch
@@ -22,25 +21,23 @@ class UiTestJob {
   String cronExpression
 
   Job build(DslFactory factory) {
-    Job baseJob = new UiTestBase(
+    Job baseJob = new BaseJobBuilder(
       name: this.name,
       description: this.description,
       emails: this.emails,
-      cronExpression: this.cronExpression,
-      branch: this.branch,
-      sitefinityPackage: this.sitefinityPackage,
-      category: this.category,
-      sslEnabled: this.sslEnabled,
-      enableMultisite: this.enableMultisite,
-      readOnlyMode: this.readOnlyMode,
-      rerunFailedUITests: this.rerunFailedUITests,
-      command: this.command
+      cronExpression: this.cronExpression
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetUiTestsGitSources('$Branch')
+        .SetUiTestParameters(this.branch, this.sitefinityPackage, this.category, this.sslEnabled, this.enableMultisite, this.readOnlyMode, this.rerunFailedUITests)
+        .ExecuteConcurentBuilds()
+        .RestrictWhereThisProjectCanBeRun('UITests')
+        .DeleteWorkspaceBeforeBuildStarts()
+        .RunUiTests(this.command)
+        .PublishMSTestReport('TestResults\\*.trx')
+        .DeleteWorkspaceWhenBuildIsDone()
         .GetJob()
     }
   }

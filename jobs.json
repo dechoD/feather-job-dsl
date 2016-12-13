@@ -135,6 +135,21 @@
       "cronExpression": "H 21 * * 1-5"
     }
   ],
+  "mvcUiJobs":
+  [
+    {
+      "name": "CodeBase_Telerik.Sitefinity.Mvc_UITests_DSL",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_No_Feather.zip",
+      "category": "",
+      "sslEnabled": false,
+      "enableMultisite": false,
+      "readOnlyMode": false,
+      "rerunFailedUITests": true,
+      "command": ".\\Tooling\\Feather\\UITests\\SitefinityMvc.ps1",
+      "cronExpression": "H 02 * * 1-5"
+    }
+  ],
   "uiJobs":
   [
     {
@@ -152,6 +167,7 @@
     },
     {
       "name": "Codebase_FeatherWidgetsUITests_ContentBlock_DSL",
+      "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
       "category": "ContentBlock",
@@ -161,18 +177,6 @@
       "rerunFailedUITests": true,
       "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
       "emails": "tihomir.petrov@telerik.com",
-      "cronExpression": "H 02 * * 1-5"
-    },
-    {
-      "name": "CodeBase_Telerik.Sitefinity.Mvc_UITests_DSL",
-      "branch": "CodeBaseIntegration",
-      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_No_Feather.zip",
-      "category": "",
-      "sslEnabled": false,
-      "enableMultisite": false,
-      "readOnlyMode": false,
-      "rerunFailedUITests": true,
-      "command": ".\\Tooling\\Feather\\UITests\\SitefinityMvc.ps1",
       "cronExpression": "H 02 * * 1-5"
     }
 ],
