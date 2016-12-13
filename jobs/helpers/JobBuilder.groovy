@@ -361,7 +361,7 @@ grunt''')
   JobBuilder RunUiTests(String command) {
     job.with {
       steps {
-        batchFile('C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command "' + command + ' -sitefinityPackage \'%SitefinityPackage%\' -buildNumber \'%JOB_NAME%_%BUILD_NUMBER%\' -category \'%Category%\' -sslEnabled $%SslEnabled% -multisiteEnabled $%EnableMultisite% -readOnlyMode $%ReadOnlyMode% -rerunFailedUITests $%RerunFailedUITests%"')
+        batchFile('C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command "' + command + ' -sitefinityPackage \'%SitefinityPackage%\' -branch \'%Branch%\' -buildNumber \'%JOB_NAME%_%BUILD_NUMBER%\' -category \'%Category%\' -sslEnabled $%SslEnabled% -multisiteEnabled $%EnableMultisite% -readOnlyMode $%ReadOnlyMode% -rerunFailedUITests $%RerunFailedUITests%"')
       }
     }
 
@@ -453,7 +453,7 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
     job.with {
       job.with {
         steps {
-          batchFile("%windir%\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command \"${command} -sitefinityPackage '%SitefinityPackage%' -testRunnerPackage '%TestRunnerPackage%' -buildNumber '%JOB_NAME%_%BUILD_NUMBER%' -categories '%Categories%' -sslEnabled \$%SslEnabled% -readOnlyMode \$%ReadOnlyMode%\"")
+          batchFile("%windir%\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command \"${command} -sitefinityPackage '%SitefinityPackage%' -branch '%Branch%' -testRunnerPackage '%TestRunnerPackage%' -buildNumber '%JOB_NAME%_%BUILD_NUMBER%' -categories '%Categories%' -sslEnabled \$%SslEnabled% -readOnlyMode \$%ReadOnlyMode%\"")
         }
       }
     }
