@@ -126,7 +126,7 @@
   "mvcIntegrationJobs":
   [
     {
-      "name": "CodeBase_Telerik.Sitefinity.Mvc_IntegrationTests_DSL",
+      "name": "CodeBase_Telerik.Sitefinity.Mvc_IntegrationTests",
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_No_Feather.zip",
       "category": "",
