@@ -15,9 +15,11 @@ class WidgetsIntegrationTestJob {
   String category
   Boolean sslEnabled
   Boolean readOnlyMode
-  String command = ".\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1"
   String emails
   String cronExpression
+
+  String command = ".\\Tooling\\Feather\\IntegrationTests\\FeatherWidgets.ps1"
+  String branchParameter = '$Branch'
 
   Job build(DslFactory factory) {
     Job baseJob = new IntegrationTestBase(
@@ -36,6 +38,7 @@ class WidgetsIntegrationTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
+        .SetMvcIntegrationTestsGitSources(this.branchParameter)
         .RunIntegrationTests(this.command)
         .GetJob()
     }

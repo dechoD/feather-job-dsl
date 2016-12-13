@@ -19,6 +19,7 @@ class IntegrationTestJob {
   String cronExpression
 
   String command = '.\\Tooling\\Feather\\IntegrationTests\\Feather.ps1'
+  String branchParameter = '$Branch'
 
   Job build(DslFactory factory) {
     Job baseJob = new IntegrationTestBase(
@@ -37,6 +38,7 @@ class IntegrationTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
+        .SetIntegrationTestsGitSources(this.branchParameter)
         .RunIntegrationTests(this.command)
         .GetJob()
     }
