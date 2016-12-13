@@ -361,7 +361,7 @@ grunt''')
   JobBuilder RunUiTests(String command) {
     job.with {
       steps {
-        batchFile('C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command "' + command + ' -sitefinityPackage \'%SitefinityPackage%\' -branch \'%Branch%\' -buildNumber \'%JOB_NAME%_%BUILD_NUMBER%\' -category \'%Category%\' -sslEnabled $%SslEnabled% -multisiteEnabled $%EnableMultisite% -readOnlyMode $%ReadOnlyMode% -rerunFailedUITests $%RerunFailedUITests%"')
+        batchFile('powershell.exe -executionpolicy unrestricted -noninteractive -command "' + command + ' -sitefinityPackage \'%SitefinityPackage%\' -branch \'%Branch%\' -buildNumber \'%JOB_NAME%_%BUILD_NUMBER%\' -category \'%Category%\' -sslEnabled $%SslEnabled% -multisiteEnabled $%EnableMultisite% -readOnlyMode $%ReadOnlyMode% -rerunFailedUITests $%RerunFailedUITests%"')
       }
     }
 
