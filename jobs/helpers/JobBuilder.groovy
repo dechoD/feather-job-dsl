@@ -228,39 +228,6 @@ class JobBuilder {
       multiscm {
         git {
           remote {
-            github('Sitefinity/feather')
-            credentials(this.toolingJenkinsId)
-          }
-          branch(branchToUse)
-          extensions {
-            relativeTargetDirectory('Feather')
-            wipeOutWorkspace()
-          }
-        }
-        git {
-          remote {
-            github('Sitefinity/feather-packages')
-            credentials(this.toolingJenkinsId)
-          }
-          branch(branchToUse)
-          extensions {
-            relativeTargetDirectory('FeatherPackages')
-            wipeOutWorkspace()
-          }
-        }
-        git {
-          remote {
-            github('Sitefinity/Tooling')
-            credentials(this.toolingJenkinsId)
-          }
-          branch('*/master')
-          extensions {
-            relativeTargetDirectory('Tooling')
-            wipeOutWorkspace()
-          }
-        }
-        git {
-          remote {
             github('Sitefinity/sitefinity-mvc')
             credentials(this.toolingJenkinsId)
           }
@@ -272,12 +239,12 @@ class JobBuilder {
         }
         git {
           remote {
-            github('Sitefinity/feather-widgets')
+            github('Sitefinity/Tooling')
             credentials(this.toolingJenkinsId)
           }
-          branch(branchToUse)
+          branch('*/master')
           extensions {
-            relativeTargetDirectory('FeatherWidgets')
+            relativeTargetDirectory('Tooling')
             wipeOutWorkspace()
           }
         }
@@ -293,6 +260,16 @@ class JobBuilder {
     job.with {
       triggers {
         githubPush()
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder BuildAfterOtherProjectsAreBuilt(String upstreamProject) {
+    job.with {
+      triggers {
+        upstream(upstreamProject, 'SUCCESS')
       }
     }
 

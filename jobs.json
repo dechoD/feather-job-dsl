@@ -123,6 +123,18 @@
       "cronExpression": "H 21 * * 1-5"
     }
   ],
+  "mvcIntegrationJobs":
+  [
+    {
+      "name": "CodeBase_Telerik.Sitefinity.Mvc_IntegrationTests_DSL",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_No_Feather.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "cronExpression": "H 21 * * 1-5"
+    }
+  ],
   "uiJobs":
   [
     {

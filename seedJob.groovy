@@ -93,6 +93,20 @@ jobs.widgetIntegrationJobs.each {
     cronExpression: it.cronExpression).build(this)
 }
 
+jobs.mvcIntegrationJobs.each {
+  new MvcIntegrationTestJob(
+    name: it.name,
+    description: it.description,
+    branch: it.branch,
+    sitefinityPackage: it.sitefinityPackage,
+    testRunnerPackage: it.testRunnerPackage,
+    category: it.category,
+    sslEnabled: it.sslEnabled,
+    readOnlyMode: it.readOnlyMode,
+    emails: it.emails,
+    cronExpression: it.cronExpression).build(this)
+}
+
 //new ClientTestJob(
 //  name: jobs.name,
 //  description: "Runs client side tests for Feather projects and checks code coverage and jshint",
