@@ -223,6 +223,18 @@ class JobBuilder {
     return this
   }
 
+  JobBuilder SetGitHubProject(String gitUrl) {
+    job.with {
+      configure {
+        it / 'properties' << 'com.coravy.hudson.plugins.github.GithubProjectProperty' {
+          'projectUrl'(gitUrl)
+        }
+      }
+    }
+
+    return this
+  }
+
   JobBuilder SetMvcTestsGitSources(String branchToUse) {
     job.with {
       multiscm {

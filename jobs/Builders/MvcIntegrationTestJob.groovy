@@ -38,8 +38,13 @@ class MvcIntegrationTestJob {
 
       def jobBuilder = new JobBuilder(baseJob)
 
+      if (this.gitProjectUrl == null) {
+        this.gitProjectUrl = 'https://github.com/Sitefinity/sitefinity-mvc'
+      }
+
       jobBuilder
         .SetMvcTestsGitSources(this.branchParameter)
+        .SetGitHubProject(this.gitProjectUrl)
         .BuildAfterOtherProjectsAreBuilt('CodeBase_Telerik.Sitefinity.Mvc_UnitTests')
         .RunIntegrationTests(this.command)
         .GetJob()

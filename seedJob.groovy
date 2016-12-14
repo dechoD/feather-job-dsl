@@ -91,6 +91,7 @@ jobs.integrationJobs.each {
     category: it.category,
     sslEnabled: it.sslEnabled,
     readOnlyMode: it.readOnlyMode,
+    gitProjectUrl: it.gitProjectUrl,
     emails: it.emails,
     cronExpression: it.cronExpression).build(this)
 }
@@ -119,8 +120,8 @@ jobs.mvcIntegrationJobs.each {
     category: it.category,
     sslEnabled: it.sslEnabled,
     readOnlyMode: it.readOnlyMode,
-    emails: it.emails,
     gitProjectUrl: it.gitProjectUrl,
+    emails: it.emails,
     cronExpression: it.cronExpression).build(this)
 }
 

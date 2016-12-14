@@ -132,7 +132,6 @@
       "category": "",
       "sslEnabled": true,
       "readOnlyMode": false,
-      "gitProjectUrl": "https://github.com/Sitefinity/feather/",
       "cronExpression": "H 21 * * 1-5"
     }
   ],

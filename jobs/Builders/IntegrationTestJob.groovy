@@ -15,6 +15,7 @@ class IntegrationTestJob {
   String category
   Boolean sslEnabled
   Boolean readOnlyMode
+  String gitProjectUrl
   String emails
   String cronExpression
 
@@ -37,9 +38,14 @@ class IntegrationTestJob {
 
       def jobBuilder = new JobBuilder(baseJob)
 
-      jobBuilder
-        .SetIntegrationTestsGitSources(this.branchParameter)
+      if (this.gitProjectUrl == null) {
+        String gitProjectUrl = 'https://github.com/Sitefinity/feather/'
+      }
+
+      def job1 = jobBuilder
+        .SetIntegrationTestsGitSources(this.branchParameter, this.gitProjectUrl)
         .RunIntegrationTests(this.command)
+        .SetGitHubProject(this.gitProjectUrl)
         .GetJob()
     }
   }
