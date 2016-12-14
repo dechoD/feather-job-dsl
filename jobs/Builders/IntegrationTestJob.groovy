@@ -43,7 +43,7 @@ class IntegrationTestJob {
       }
 
       def job1 = jobBuilder
-        .SetIntegrationTestsGitSources(this.branchParameter, this.gitProjectUrl)
+        .SetIntegrationTestsGitSources(this.branchParameter)
         .RunIntegrationTests(this.command)
         .SetGitHubProject(this.gitProjectUrl)
         .GetJob()
