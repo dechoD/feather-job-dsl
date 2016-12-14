@@ -16,6 +16,7 @@ class MvcIntegrationTestJob {
   Boolean sslEnabled
   Boolean readOnlyMode
   String emails
+  String gitProjectUrl
   String cronExpression
 
   String command = ".\\Tooling\\Feather\\IntegrationTests\\SitefinityMvc.ps1"

@@ -104,6 +104,7 @@ jobs.mvcIntegrationJobs.each {
     sslEnabled: it.sslEnabled,
     readOnlyMode: it.readOnlyMode,
     emails: it.emails,
+    gitProjectUrl: it.gitProjectUrl,
     cronExpression: it.cronExpression).build(this)
 }
 

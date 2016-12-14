@@ -16,6 +16,7 @@ class IntegrationTestBase {
   Boolean sslEnabled
   Boolean readOnlyMode
   String emails
+  String gitProjectUrl
   String cronExpression
 
   Job build(DslFactory factory) {
