@@ -40,7 +40,7 @@ class MvcUiTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetMvcTestsGitSources(this.branch)
+        .SetMvcTestsGitSources('$Branch')
         .GetJob()
     }
   }
