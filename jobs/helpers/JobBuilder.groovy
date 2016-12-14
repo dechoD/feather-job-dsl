@@ -223,7 +223,7 @@ class JobBuilder {
     return this
   }
 
-  JobBuilder SetMvcIntegrationTestsGitSources(String branchToUse) {
+  JobBuilder SetMvcTestsGitSources(String branchToUse) {
     job.with {
       multiscm {
         git {

@@ -39,7 +39,7 @@ class MvcIntegrationTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetMvcIntegrationTestsGitSources(this.branchParameter)
+        .SetMvcTestsGitSources(this.branchParameter)
         .BuildAfterOtherProjectsAreBuilt('CodeBase_Telerik.Sitefinity.Mvc_UnitTests')
         .RunIntegrationTests(this.command)
         .GetJob()

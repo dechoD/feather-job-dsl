@@ -136,6 +136,21 @@
       "cronExpression": "H 21 * * 1-5"
     }
   ],
+  "mvcUiJobs":
+  [
+    {
+      "name": "CodeBase_Telerik.Sitefinity.Mvc_UITests_DSL",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_No_Feather.zip",
+      "category": "",
+      "sslEnabled": false,
+      "enableMultisite": false,
+      "readOnlyMode": false,
+      "rerunFailedUITests": true,
+      "command": ".\\Tooling\\Feather\\UITests\\SitefinityMvc.ps1",
+      "cronExpression": "H 02 * * 1-5"
+    }
+  ],
   "uiJobs":
   [
     {
@@ -153,6 +168,7 @@
     },
     {
       "name": "Codebase_FeatherWidgetsUITests_ContentBlock_DSL",
+      "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "CodeBaseIntegration",
       "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
       "category": "ContentBlock",
@@ -165,15 +181,31 @@
       "cronExpression": "H 02 * * 1-5"
     },
     {
-      "name": "CodeBase_Telerik.Sitefinity.Mvc_UITests_DSL",
+      "name": "Codebase_FeatherWidgetsUITests_PagesAndContent_DSL",
+      "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "CodeBaseIntegration",
-      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_No_Feather.zip",
-      "category": "",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
+      "category": "PagesAndContent",
       "sslEnabled": false,
-      "enableMultisite": false,
+      "enableMultisite": true,
       "readOnlyMode": false,
       "rerunFailedUITests": true,
-      "command": ".\\Tooling\\Feather\\UITests\\SitefinityMvc.ps1",
-      "cronExpression": "H 02 * * 1-5"
+      "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
+      "emails": "tihomir.petrov@telerik.com",
+      "cronExpression": "H 04 * * 1-5"
+    },
+    {
+      "name": "Codebase_FeatherWidgetsUITests_PagesAndContent_ReadOnly_DSL",
+      "description": "The Frontend Widgets for the Sitefinity Feather project.",
+      "branch": "CodeBaseIntegration",
+      "sitefinityPackage": "SitefinityWebApp_10.0.6400.0_Feather.zip",
+      "category": "PagesAndContent&!IgnoredInReadOnly",
+      "sslEnabled": false,
+      "enableMultisite": true,
+      "readOnlyMode": true,
+      "rerunFailedUITests": true,
+      "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
+      "emails": "tihomir.petrov@telerik.com",
+      "cronExpression": "H 04 * * 1-5"
     }
 ],

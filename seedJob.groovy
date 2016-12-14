@@ -65,6 +65,22 @@ jobs.uiJobs.each {
     cronExpression: it.cronExpression).build(this)
 }
 
+jobs.mvcUiJobs.each {
+  new MvcUiTestJob(
+    name: it.name,
+    description: it.description,
+    branch: it.branch,
+    sitefinityPackage: it.sitefinityPackage,
+    category: it.category,
+    sslEnabled: it.sslEnabled,
+    enableMultisite: it.enableMultisite,
+    readOnlyMode: it.readOnlyMode,
+    rerunFailedUITests: it.rerunFailedUITests,
+    command: it.command,
+    emails: it.emails,
+    cronExpression: it.cronExpression).build(this)
+  }
+
 jobs.integrationJobs.each {
   new IntegrationTestJob(
     name: it.name,
