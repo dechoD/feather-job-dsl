@@ -200,6 +200,7 @@
       "category": "",
       "sslEnabled": true,
       "readOnlyMode": false,
+      "gitProjectUrl": "https://github.com/Sitefinity/feather/",
       "buildWhenChangeIsPushed": true,
       "cronExpression": "H 05 * * 1-5"
     },
