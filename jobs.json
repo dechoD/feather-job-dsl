@@ -99,6 +99,17 @@
       "readOnlyMode": false,
       "emails": "tihomir.petrov@telerik.com",
       "cronExpression": "H 19 * * 1-5"
+    },
+    {
+      "name": "Internal_Master_FeatherIntegrationTests_DSL",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
+      "testRunnerPackage": "Telerik.WebTestRunner.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "emails": "tihomir.petrov@telerik.com",
+      "cronExpression": "H 05 * * 1-5"
     }
   ],
   "widgetIntegrationJobs":
@@ -150,6 +161,24 @@
       "sslEnabled": true,
       "readOnlyMode": false,
       "cronExpression": "H 20 * * 1-5"
+    },
+    {
+      "name": "Internal_Master_FeatherWidgetsIntegrationTests_DSL",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
+      "category": "Forms,Blogs,ContentBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "cronExpression": "H 03 * * 1-5"
+    },
+    {
+      "name": "Internal_Master_FeatherWidgetsIntegrationTests_DynamicWidgets_DSL",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
+      "category": "DynamicWidgets",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "cronExpression": "H 06 * * 1-5"
     }
   ],
   "mvcIntegrationJobs":
@@ -162,6 +191,24 @@
       "sslEnabled": true,
       "readOnlyMode": false,
       "cronExpression": "H 21 * * 1-5"
+    },
+    {
+      "name": "Internal_Master_Telerik.Sitefinity.Mvc_IntegrationTests_DSL",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "cronExpression": "H 05 * * 1-5"
+    },
+    {
+      "name": "Master_Telerik.Sitefinity.Mvc_IntegrationTests_DSL",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_No_Feather.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "cronExpression": "H 19 * * 1-5"
     }
   ],
   "mvcUiJobs":
