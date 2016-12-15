@@ -90,7 +90,7 @@
       "cronExpression": "H 22 * * 1-5"
     },
     {
-      "name": "Master_FeatherIntegrationTests_DSL",
+      "name": "Master_FeatherIntegrationTests",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
       "testRunnerPackage": "Telerik.WebTestRunner.zip",
@@ -145,7 +145,7 @@
       "cronExpression": "H 21 * * 1-5"
     },
     {
-      "name": "Master_FeatherWidgetsIntegrationTests_DSL",
+      "name": "Master_FeatherWidgetsIntegrationTests",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
       "category": "Forms,Blogs,ContentBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
@@ -154,7 +154,7 @@
       "cronExpression": "H 19 * * 1-5"
     },
     {
-      "name": "Master_FeatherWidgetsIntegrationTests_DynamicWidgets_DSL",
+      "name": "Master_FeatherWidgetsIntegrationTests_DynamicWidgets",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
       "category": "DynamicWidgets",
