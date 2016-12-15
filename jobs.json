@@ -341,7 +341,7 @@
       "rerunFailedUITests": true,
       "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
       "emails": "tihomir.petrov@telerik.com",
-      "cronExpression": "H 03 * * 1-5"
+      "cronExpression": ""
     },
     {
       "name": "Internal_Master_FeatherWidgetsUITests_Packaging_DSL",
@@ -355,7 +355,7 @@
       "rerunFailedUITests": true,
       "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
       "emails": "tihomir.petrov@telerik.com",
-      "cronExpression": "H 03 * * 1-5"
+      "cronExpression": ""
     },
     {
       "name": "Internal_Master_FeatherWidgetsUITests_PagesAndContent_DSL",
@@ -369,7 +369,7 @@
       "rerunFailedUITests": true,
       "command": ".\\Tooling\\Feather\\UITests\\FeatherWidgets.ps1",
       "emails": "tihomir.petrov@telerik.com",
-      "cronExpression": "H 03 * * 1-5"
+      "cronExpression": ""
     },
     {
       "name": "Internal_Master_FeatherUITests_DSL",
@@ -382,7 +382,7 @@
       "rerunFailedUITests": true,
       "command": ".\\Tooling\\Feather\\UITests\\Feather.ps1",
       "emails": "tihomir.petrov@telerik.com",
-      "cronExpression": "H 03 * * 1-5"
+      "cronExpression": ""
     },
     {
       "name": "Master_FeatherUITests_DSL",
