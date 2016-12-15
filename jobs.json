@@ -190,6 +190,7 @@
       "category": "",
       "sslEnabled": true,
       "readOnlyMode": false,
+      "buildAfterProject": "CodeBase_Telerik.Sitefinity.Mvc_UnitTests",
       "cronExpression": "H 21 * * 1-5"
     },
     {
@@ -199,6 +200,7 @@
       "category": "",
       "sslEnabled": true,
       "readOnlyMode": false,
+      "buildWhenChangeIsPushed": true,
       "cronExpression": "H 05 * * 1-5"
     },
     {
@@ -208,6 +210,7 @@
       "category": "",
       "sslEnabled": true,
       "readOnlyMode": false,
+      "buildAfterProject": "Master_Telerik.Sitefinity.Mvc_UnitTests",
       "cronExpression": "H 19 * * 1-5"
     }
   ],

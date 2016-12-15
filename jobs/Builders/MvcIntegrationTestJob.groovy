@@ -15,6 +15,8 @@ class MvcIntegrationTestJob {
   String category
   Boolean sslEnabled
   Boolean readOnlyMode
+  Boolean buildWhenChangeIsPushed
+  String buildAfterProject
   String emails
   String gitProjectUrl
   String cronExpression
@@ -45,8 +47,19 @@ class MvcIntegrationTestJob {
       jobBuilder
         .SetMvcTestsGitSources(this.branchParameter)
         .SetGitHubProject(this.gitProjectUrl)
-        .BuildAfterOtherProjectsAreBuilt('CodeBase_Telerik.Sitefinity.Mvc_UnitTests')
         .RunIntegrationTests(this.command)
+
+      if (this.buildAfterProject != null) {
+        jobBuilder
+          .BuildAfterOtherProjectsAreBuilt(this.buildAfterProject)
+      }
+
+      if (this.buildWhenChangeIsPushed != null) {
+        jobBuilder
+          .TriggerBuildOnGitPush()
+      }
+
+      jobBuilder
         .GetJob()
     }
   }
