@@ -38,7 +38,7 @@ class WidgetsIntegrationTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetMvcTestsGitSources(this.branchParameter)
+        .SetIntegrationTestsGitSources(this.branchParameter)
         .RunIntegrationTests(this.command)
         .GetJob()
     }

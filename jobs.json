@@ -88,6 +88,17 @@
       "readOnlyMode": true,
       "emails": "tihomir.petrov@telerik.com",
       "cronExpression": "H 22 * * 1-5"
+    },
+    {
+      "name": "Master_FeatherIntegrationTests_DSL",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
+      "testRunnerPackage": "Telerik.WebTestRunner.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "emails": "tihomir.petrov@telerik.com",
+      "cronExpression": "H 19 * * 1-5"
     }
   ],
   "widgetIntegrationJobs":
@@ -121,6 +132,24 @@
       "sslEnabled": true,
       "readOnlyMode": true,
       "cronExpression": "H 21 * * 1-5"
+    },
+    {
+      "name": "Master_FeatherWidgetsIntegrationTests_DSL",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
+      "category": "Forms,Blogs,ContentBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "cronExpression": "H 19 * * 1-5"
+    },
+    {
+      "name": "Master_FeatherWidgetsIntegrationTests_DynamicWidgets_DSL",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
+      "category": "DynamicWidgets",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "cronExpression": "H 20 * * 1-5"
     }
   ],
   "mvcIntegrationJobs":
