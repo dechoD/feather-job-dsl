@@ -88,6 +88,17 @@
       "readOnlyMode": true,
       "emails": "tihomir.petrov@telerik.com",
       "cronExpression": "H 22 * * 1-5"
+    },
+    {
+      "name": "Master_FeatherIntegrationTests_DSL",
+      "branch": "master",
+      "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
+      "testRunnerPackage": "Telerik.WebTestRunner.zip",
+      "category": "",
+      "sslEnabled": true,
+      "readOnlyMode": false,
+      "emails": "tihomir.petrov@telerik.com",
+      "cronExpression": "H 19 * * 1-5"
     }
   ],
   "widgetIntegrationJobs":

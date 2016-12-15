@@ -39,7 +39,7 @@ class IntegrationTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       if (this.gitProjectUrl == null) {
-        String gitProjectUrl = 'https://github.com/Sitefinity/feather/'
+        this.gitProjectUrl = 'https://github.com/Sitefinity/feather/'
       }
 
       def job1 = jobBuilder
