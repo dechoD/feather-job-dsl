@@ -75,6 +75,17 @@ class JobBuilder {
     return this
   }
 
+  JobBuilder BlockBuildIfCertainJobsAreRunning(Iterable<String> jobs) {
+    job.with {
+      blockOn(jobs) {
+        blockLevel('GLOBAL')
+        scanQueueFor('DISABLED')
+      }
+    }
+
+    return this
+  }
+
   // ### SOURCE CODE MANAGEMENT ###
 
   JobBuilder SetUnitTestsGitSource(String featherRepository, String localFolder) {
@@ -308,6 +319,25 @@ class JobBuilder {
     return this
   }
 
+  JobBuilder SetSingleGitSource(String repository, String branchToUse) {
+    job.with {
+      scm {
+        git {
+          branch(branchToUse)
+          remote {
+            github(repository, 'https')
+            credentials(this.toolingJenkinsId)
+          }
+          extensions {
+            wipeOutWorkspace()
+          }
+        }
+      }
+    }
+
+    return this
+  }
+
   // ### BUILD TRIGGERS ###
 
   JobBuilder TriggerBuildOnGitPush() {
@@ -496,6 +526,35 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
         steps {
           batchFile("%windir%\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command \"${command} -sitefinityPackage '%SitefinityPackage%' -branch '%Branch%' -testRunnerPackage '%TestRunnerPackage%' -buildNumber '%JOB_NAME%_%BUILD_NUMBER%' -categories '%Categories%' -sslEnabled \$%SslEnabled% -readOnlyMode \$%ReadOnlyMode%\"")
         }
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder CleanUiMachines() {
+    job.with {
+      job.with {
+        steps {
+          batchFile("powershell.exe -executionpolicy unrestricted -noninteractive -command \"import-module .\\Feather\\Cleanup\\Cleanup.ps1;CleanTestAgentTempFiles\"")
+        }
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder ToggleSlaves(String toggle) {
+    job.with {
+      steps {
+        powerShell("""function global:Write-Host() {}
+function global:Write-Output() {}
+\$cloudsvcname ="feather-ci-int"
+\$vmname = "feather-ci-int"
+
+. .\\AzureVMConfigurators\\StartStopAzureVM.ps1 *>\$null
+ImportPublishSettings \$(Join-Path \$scriptPath "Subscription0.publishsettings") *>\$null
+${toggle}VM  \$cloudsvcname  \$vmname *>\$null""")
       }
     }
 

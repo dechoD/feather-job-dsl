@@ -126,3 +126,7 @@ jobs.mvcIntegrationJobs.each {
     emails: it.emails,
     cronExpression: it.cronExpression).build(this)
 }
+
+new CleanUiMachines().build(this)
+new StartSlaves().build(this)
+new StopSlaves().build(this)
