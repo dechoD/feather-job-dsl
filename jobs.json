@@ -230,7 +230,7 @@
       "cronExpression": "H 02 * * 1-5"
     },
     {
-      "name": "Master_Telerik.Sitefinity.Mvc_UITests_DSL",
+      "name": "Master_Telerik.Sitefinity.Mvc_UITests",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_No_Feather.zip",
       "category": "",
@@ -381,7 +381,7 @@
       "cronExpression": "H 03 * * 1-5"
     },
     {
-      "name": "Internal_Master_FeatherWidgetsUITests_ContentBlocks_DSL",
+      "name": "Internal_Master_FeatherWidgetsUITests_ContentBlocks",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
@@ -394,7 +394,7 @@
       "emails": "tihomir.petrov@telerik.com",
     },
     {
-      "name": "Internal_Master_FeatherWidgetsUITests_Packaging_DSL",
+      "name": "Internal_Master_FeatherWidgetsUITests_Packaging",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
@@ -432,7 +432,7 @@
       "emails": "tihomir.petrov@telerik.com",
     },
     {
-      "name": "Master_FeatherUITests_DSL",
+      "name": "Master_FeatherUITests",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
       "category": "PagesAndContent",
@@ -445,7 +445,7 @@
       "cronExpression": "H 19 * * 1-5"
     },
     {
-      "name": "Master_FeatherWidgetsUITests_ContentBlock_DSL",
+      "name": "Master_FeatherWidgetsUITests_ContentBlock",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
@@ -484,7 +484,7 @@
       "cronExpression": "H 21 * * 1-5"
     },
     {
-      "name": "Master_FeatherWidgetsUITests_Packaging_DSL",
+      "name": "Master_FeatherWidgetsUITests_Packaging",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
