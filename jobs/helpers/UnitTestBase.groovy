@@ -11,6 +11,7 @@ class UnitTestBase {
   String description
   String emails
   String cronExpression
+  String branchParameter
 
   Job build(DslFactory factory) {
     Job baseJob = new BaseJobBuilder(
@@ -21,9 +22,11 @@ class UnitTestBase {
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)
-      .RestrictWhereThisProjectCanBeRun('UnitTests')
-      .TriggerBuildOnGitPush()
-      .PublishMSTestReport('tests.trx')
-      .GetJob()
+        .SetUnitTestParameters(this.branchParameter)
+        .RestrictWhereThisProjectCanBeRun('UnitTests')
+        .TriggerBuildOnGitPush()
+        .DeleteWorkspaceBeforeBuildStarts()
+        .PublishMSTestReport('*.trx')
+        .GetJob()
     }
   }

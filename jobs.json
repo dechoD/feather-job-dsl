@@ -30,39 +30,39 @@
   "unitJobs":
   [
     {
-      "name": "Codebase_FeatherUnitTests",
-      "featherBranch": "*/CodeBaseIntegration"
+      "name": "Codebase_FeatherUnitTests_DSL",
+      "featherBranch": "CodeBaseIntegration"
     },
     {
-      "name": "Master_FeatherUnitTests",
-      "featherBranch": "*/master",
+      "name": "Master_FeatherUnitTests_DSL",
+      "featherBranch": "master",
       "emails": "tihomir.petrov@telerik.com"
     }
   ],
   "widgetUnitJobs":
   [
     {
-      "name": "Codebase_FeatherWidgetsUnitTests",
+      "name": "Codebase_FeatherWidgetsUnitTests_DSL",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
-      "featherBranch": "*/CodeBaseIntegration",
+      "featherBranch": "CodeBaseIntegration",
       "downstreamProject": "Codebase_FeatherWidgetsClientTest"
     },
     {
-      "name": "Master_FeatherWidgetsUnitTests",
+      "name": "Master_FeatherWidgetsUnitTests_DSL",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
-      "featherBranch": "*/master",
+      "featherBranch": "master",
       "emails": "tihomir.petrov@telerik.com"
     }
   ],
   "mvcUnitJobs":
   [
     {
-      "name": "CodeBase_Telerik.Sitefinity.Mvc_UnitTests",
-      "featherBranch": "*/CodeBaseIntegration"
+      "name": "CodeBase_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+      "featherBranch": "CodeBaseIntegration"
     },
     {
-      "name": "Master_Telerik.Sitefinity.Mvc_UnitTests",
-      "featherBranch": "*/master"
+      "name": "Master_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+      "featherBranch": "master"
     }
   ],
   "integrationJobs":

@@ -65,7 +65,49 @@ class JobBuilder {
     return this
   }
 
+  JobBuilder SetUnitTestParameters(String branch) {
+    job.with {
+      parameters {
+        stringParam("Branch", branch)
+      }
+    }
+
+    return this
+  }
+
   // ### SOURCE CODE MANAGEMENT ###
+
+  JobBuilder SetUnitTestsGitSource(String featherRepository, String localFolder) {
+    job.with {
+      multiscm {
+        git {
+          remote {
+            github(featherRepository)
+            credentials(this.toolingJenkinsId)
+          }
+          branch("\$Branch")
+          extensions {
+            relativeTargetDirectory(localFolder)
+            wipeOutWorkspace()
+          }
+        }
+        git {
+          remote {
+            github('Sitefinity/Tooling')
+            credentials(this.toolingJenkinsId)
+          }
+          branch("*/master")
+          extensions {
+            relativeTargetDirectory('Tooling')
+            wipeOutWorkspace()
+          }
+        }
+      }
+    }
+
+    return this
+  }
+
 
   JobBuilder SetClientTestsGitSource(String branchToUse, String repository = 'Sitefinity/feather') {
     job.with {
@@ -416,6 +458,16 @@ FOR /F "tokens=*" %%G IN ('dir /b Telerik.Sitefinity.Mvc.TestUtilities.*.nupkg')
           'cmdLineArgs'(parameters)
           'failBuild'(failOnError)
         }
+      }
+    }
+
+    return this
+  }
+
+  JobBuilder RunUnitTests(String command) {
+    job.with {
+      steps {
+        batchFile("%windir%\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe -executionpolicy unrestricted -noninteractive -command \"${command} -buildNumber '%JOB_NAME%_%BUILD_NUMBER%' -branch '%Branch%'\"")
       }
     }
 

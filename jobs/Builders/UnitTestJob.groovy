@@ -20,6 +20,7 @@ class UnitTestJob {
     Job baseJob = new UnitTestBase(
       name: this.name,
       description: this.description,
+      branchParameter: this.featherBranch,
       emails: this.emails,
       cronExpression: this.cronExpression
       ).build(factory)
@@ -27,12 +28,9 @@ class UnitTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetClientTestsGitSource(this.featherBranch)
-        .MSBuildProject('.nuget\\NuGet.targets', 'CheckPrerequisites')
-        .InstallFeatherPackages()
-        .MSBuildProject('Feather.sln')
-        .RunUnitTestsWithMSTest(this.testFiles)
-        .RunWindowsExe('CodeCoverageConverter.exe', '-source:TestResults\\In\\FEATHER-CI\\data.coverage -dest:data.xml', 'true')
+        .SetUnitTestsGitSource("Sitefinity/feather", "feather")
+        .SetGitHubProject("https://github.com/Sitefinity/feather/")
+        .RunUnitTests(".\\Tooling\\Feather\\UnitTests\\Feather.ps1")
         .PublishEmmaCoverageReport('data.xml')
         .GetJob()
     }

@@ -18,6 +18,7 @@ class MvcUnitTestJob {
     Job baseJob = new UnitTestBase(
       name: this.name,
       description: this.description,
+      branchParameter: this.featherBranch,
       emails: this.emails,
       cronExpression: this.cronExpression
       ).build(factory)
@@ -25,11 +26,9 @@ class MvcUnitTestJob {
       def jobBuilder = new JobBuilder(baseJob)
 
       jobBuilder
-        .SetClientTestsGitSource(featherBranch, 'Sitefinity/sitefinity-mvc')
-        .DeleteWorkspaceBeforeBuildStarts()
-        .MSBuildProject('.\\Telerik.Sitefinity.Mvc.sln')
-        .RunMvcUnitTests()
-        .PushMvcNuget()
+        .SetUnitTestsGitSource("Sitefinity/sitefinity-mvc", "sitefinity-mvc")
+        .SetGitHubProject("https://github.com/Sitefinity/sitefinity-mvc/")
+        .RunUnitTests(".\\Tooling\\Feather\\UnitTests\\SitefinityMvc.ps1")
         .GetJob()
     }
   }
