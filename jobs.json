@@ -355,7 +355,7 @@
       "cronExpression": "H 02 * * 1-5"
     },
     {
-      "name": "Internal_FeatherWidgetsUITests_DynamicWidgetsAndModuleBuilder_DSL",
+      "name": "Int_FeatherWidgetsUITests_DynWidAndModBldr_DSL",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
