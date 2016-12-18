@@ -9,7 +9,7 @@ import javaposse.jobdsl.dsl.*
 class StopSlaves {
   Job build(DslFactory factory) {
     Job baseJob = new BaseJobBuilder(
-      name: "SystemJob-StopSlaves_DSL",
+      name: "SystemJob-StopSlaves",
       description: "Job that deallocate slaves during quiet hours.",
       emails: "ivan.dimitrov@telerik.com"
       ).build(factory)

@@ -9,7 +9,7 @@ import javaposse.jobdsl.dsl.*
 class CleanUiMachines {
   Job build(DslFactory factory) {
     Job baseJob = new BaseJobBuilder(
-      name: "SystemJob-CleanUIMachines_DSL",
+      name: "SystemJob-CleanUIMachines",
       description: "Job that cleans Test Agent temp files on UI machines.",
       emails: "tihomir.petrov@telerik.com",
       cronExpression: "30 18 * * *"
