@@ -30,11 +30,11 @@
   "unitJobs":
   [
     {
-      "name": "Codebase_FeatherUnitTests_DSL",
+      "name": "Codebase_FeatherUnitTests",
       "featherBranch": "CodeBaseIntegration"
     },
     {
-      "name": "Master_FeatherUnitTests_DSL",
+      "name": "Master_FeatherUnitTests",
       "featherBranch": "master",
       "emails": "tihomir.petrov@telerik.com"
     }
@@ -42,13 +42,13 @@
   "widgetUnitJobs":
   [
     {
-      "name": "Codebase_FeatherWidgetsUnitTests_DSL",
+      "name": "Codebase_FeatherWidgetsUnitTests",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "featherBranch": "CodeBaseIntegration",
       "downstreamProject": "Codebase_FeatherWidgetsClientTest"
     },
     {
-      "name": "Master_FeatherWidgetsUnitTests_DSL",
+      "name": "Master_FeatherWidgetsUnitTests",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "featherBranch": "master",
       "emails": "tihomir.petrov@telerik.com"
@@ -57,11 +57,11 @@
   "mvcUnitJobs":
   [
     {
-      "name": "CodeBase_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+      "name": "CodeBase_Telerik.Sitefinity.Mvc_UnitTests",
       "featherBranch": "CodeBaseIntegration"
     },
     {
-      "name": "Master_Telerik.Sitefinity.Mvc_UnitTests_DSL",
+      "name": "Master_Telerik.Sitefinity.Mvc_UnitTests",
       "featherBranch": "master"
     }
   ],
@@ -172,7 +172,7 @@
       "cronExpression": "H 03 * * 1-5"
     },
     {
-      "name": "Int_M_FeatherWidgetsIntegrationTests_DynamicWidgets_DSL",
+      "name": "Internal_Master_FeatherWidgetsIntegrationTests_DynamicWidgets",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
       "category": "DynamicWidgets",
@@ -355,7 +355,7 @@
       "cronExpression": "H 02 * * 1-5"
     },
     {
-      "name": "Int_FeatherWidgetsUITests_DynWidAndModBldr_DSL",
+      "name": "Internal_FeatherWidgetsUITests_DynamicWidgetsAndModuleBuilder",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
@@ -368,7 +368,7 @@
       "cronExpression": "H 03 * * 1-5"
     },
     {
-      "name": "Internal_FeatherWidgetsUITests_Forms_DSL",
+      "name": "Internal_FeatherWidgetsUITests_Forms",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
@@ -407,7 +407,7 @@
       "emails": "tihomir.petrov@telerik.com",
     },
     {
-      "name": "Internal_Master_FeatherWidgetsUITests_PagesAndContent_DSL",
+      "name": "Internal_Master_FeatherWidgetsUITests_PagesAndContent",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
@@ -471,7 +471,7 @@
       "cronExpression": "H 21 * * 1-5"
     },
     {
-      "name": "Master_FeatherWidgetsUITests_Forms_DSL",
+      "name": "Master_FeatherWidgetsUITests_Forms",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
@@ -497,7 +497,7 @@
       "cronExpression": "H 22 * * 1-5"
     },
     {
-      "name": "Master_FeatherWidgetsUITests_PagesAndContent_DSL",
+      "name": "Master_FeatherWidgetsUITests_PagesAndContent",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
