@@ -420,7 +420,7 @@
       "emails": "tihomir.petrov@telerik.com",
     },
     {
-      "name": "Internal_Master_FeatherUITests_DSL",
+      "name": "Internal_Master_FeatherUITests",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6280.0_Internal.zip",
       "category": "PagesAndContent",
@@ -458,7 +458,7 @@
       "cronExpression": "H 19 * * 1-5"
     },
     {
-      "name": "Master_FeatherWidgetsUITests_DynamicWidgetsAndModuleBuilder_DSL",
+      "name": "Master_FeatherWidgetsUITests_DynamicWidgetsAndModuleBuilder",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "branch": "master",
       "sitefinityPackage": "SitefinityWebApp_9.2_6200.0_Feather.zip",
