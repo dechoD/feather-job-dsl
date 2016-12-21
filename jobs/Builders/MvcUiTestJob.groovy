@@ -17,10 +17,11 @@ class MvcUiTestJob {
   Boolean enableMultisite
   Boolean readOnlyMode
   Boolean rerunFailedUITests
-  String command
   String emails
   String cronExpression
   Boolean mandatory
+
+  String command = ".\\Tooling\\Feather\\UITests\\SitefinityMvc.ps1"
 
   Job build(DslFactory factory) {
     Job baseJob = new UiTestBase(

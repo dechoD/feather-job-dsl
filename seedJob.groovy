@@ -82,7 +82,6 @@ jobs.mvcUiJobs.each {
     enableMultisite: it.enableMultisite,
     readOnlyMode: it.readOnlyMode,
     rerunFailedUITests: it.rerunFailedUITests,
-    command: it.command,
     emails: it.emails,
     cronExpression: it.cronExpression,
     mandatory: it.mandatory).build(this)

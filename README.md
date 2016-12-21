@@ -1,30 +1,65 @@
-# jenkins-as-code-starter-project
-A neat little project that uses our jenkins utils and helps you to get started and start testing your scripts
-
+# Feather Jenkins CI Job DSL groovy scripts
+This project is used by https://feather-ci.sitefinity.com/ SeedJob to create and recreate all other jobs except team specific job definitions.
 
 ## Usage
 
-1. Clone this repo
-1. Rename it to something meaningful for your project
-1. Change the git remote URL to wherever your jobs will live
-1. In `settings.gradle`, change the `rootProject.name` to match your new project name
-1. Run `./gradlew build` from the project root directory
-1. Install and run a local Jenkins 
-1. Profit! Start writing your jobs in jobs dir. 
+1. Jobs are defined in jobs.json. There is an array for each type of jenkins job:
+ + clientJobs
+ + clientWidgetJobs
+ + unitJobs
+ + widgetUnitJobs
+ + mvcUnitJobs
+ + integrationJobs
+ + widgetIntegrationJobs
+ + mvcIntegrationJobs
+ + mvcUiJobs
+ + uiJobs
 
-## Creating your jobs in Jenkins
+1. Add your job using the existing as reference
 
-### Creating the seed job
-
-Ultimately, you'll need a "seed job" to run your job files in Jenkins, essentially following [these instructions](https://github.com/jenkinsci/job-dsl-plugin#basic-usage)
-
-Assuming you're using our [jenkins-automation](https://github.com/cfpb/jenkins-automation/) niceties, 
-your seed job will be configured with "multi-scm" and 2 git repos: the `jenkins-automation` repo, 
-and the repo that you're creating by cloning this `jenkins-as-code-starter-project`
+1. Supported parameters are as follows:
+  + All jobs support :
+    + String name
+    + String description (defaults to empty string)
+    + String emails (no email notification set if missing)
+    + String cronExpression (no schedule run is set if missing)
+    + Boolean mandatory (defaults to false)
+  + Integration test jobs support their parameters:
+    + String branch
+    + String sitefinityPackage
+    + String testRunnerPackage
+    + String category
+    + Boolean sslEnabled
+    + Boolean readOnlyMode
+  + Unit tests:
+    + String branchParameter
+  + UI tests:
+    + String sitefinityPackage
+    + String category
+    + Boolean sslEnabled
+    + Boolean enableMultisite
+    + Boolean readOnlyMode
+    + Boolean rerunFailedUITests
+    + String command
+      + ".\\\\Tooling\\\\Feather\\\\UITests\\\\Feather.ps1" for feather tests
+      + ".\\\\Tooling\\\\Feather\\\\UITests\\\\FeatherWidgets.ps1" for widget tests
+  + Mvc UI Test jobs:
+    + String sitefinityPackage
+    + String category
+    + Boolean sslEnabled
+    + Boolean enableMultisite
+    + Boolean readOnlyMode
+    + Boolean rerunFailedUITests
 
 ### Local development helper
 
-For local development, as you iterate on your job files, it's usually nice to tweak your file locally, 
+1. You need this only if you are going to write a script for a new type of job, to add a new job definition refer to [Usage](#Usage) section
+1. Install and run a local Jenkins (If you need quick and safe script validation)
+1. Clone this repo
+1. Run `./gradlew build` from the project root directory
+1. Start writing your jobs.
+
+For local development, as you iterate on your job files, it's usually nice to tweak your file locally,
 create those jobs in a local jenkins, and then push to GitHub when they're working as expected.
 
 To do so, use the gradle `rest` task, which we've included in `jenkins-automation` and lifted nearly verbatim from https://github.com/sheehan/job-dsl-gradle-example (thanks!)
@@ -39,11 +74,11 @@ To do so, use the gradle `rest` task, which we've included in `jenkins-automatio
 * `JAC_ENVIRONMENT` - An environment variable we set in all of our Jenkinses. Defaults to "dev". Used by our `EnvironmentUtils`. See example usage in `jobs/jobs.groovy` in this repo
 * `JAC_HOST` - An environment variable we set in all of our Jenkinses. Defaults to "aws".
 
-This uses a task named `rest` to execute `jenkins.automation.rest.RestApiScriptRunner`, 
+This uses a task named `rest` to execute `jenkins.automation.rest.RestApiScriptRunner`,
 which lives in the `jenkins-automation` repo and is available here since `jenkins-automation` is a dependency.
 
-Finally, install and run Jenkins locally: 
-* download the `.war` file from [https://jenkins.io/](https://jenkins.io/) 
+Finally, install and run Jenkins locally:
+* download the `.war` file from [https://jenkins.io/](https://jenkins.io/)
 * run with `nohup java -jar path-to-file/jenkins.war --httpPort=8081`
 
 #### Examples

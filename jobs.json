@@ -234,7 +234,6 @@
       "enableMultisite": false,
       "readOnlyMode": false,
       "rerunFailedUITests": true,
-      "command": ".\\Tooling\\Feather\\UITests\\SitefinityMvc.ps1",
       "cronExpression": "H 02 * * 1-5",
       "mandatory": true
     },
@@ -247,7 +246,6 @@
       "enableMultisite": false,
       "readOnlyMode": false,
       "rerunFailedUITests": true,
-      "command": ".\\Tooling\\Feather\\UITests\\SitefinityMvc.ps1",
       "cronExpression": "H 19 * * 1-5"
     }
   ],
