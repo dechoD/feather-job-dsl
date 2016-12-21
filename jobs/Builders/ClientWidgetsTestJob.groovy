@@ -13,13 +13,15 @@ class ClientWidgetsTestJob {
   String emails
   String featherBranch
   String cronExpression
+  Boolean mandatory
 
   Job build(DslFactory factory) {
     Job baseJob = new ClientTestBase(
       name: this.name,
       description: this.description,
       emails: this.emails,
-      cronExpression: this.cronExpression
+      cronExpression: this.cronExpression,
+      mandatory: this.mandatory      
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)

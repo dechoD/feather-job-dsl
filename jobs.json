@@ -10,7 +10,8 @@
       "name": "Master_FeatherClientTest",
       "description": "Runs client side tests for Feather projects and checks code coverage and jshint",
       "featherBranch": "*/master",
-      "emails": "tihomir.petrov@telerik.com"
+      "emails": "tihomir.petrov@telerik.com",
+      "mandatory": true
     }
   ],
   "clientWidgetJobs":
@@ -18,7 +19,8 @@
     {
       "name": "Codebase_FeatherWidgetsClientTest",
       "description": "Runs client side tests for FeatherWidgets projects and checks code coverage and jshint",
-      "featherBranch": "*/CodeBaseIntegration"
+      "featherBranch": "*/CodeBaseIntegration",
+      "mandatory": true
     },
     {
       "name": "Master_FeatherWidgetsClientTest",
@@ -36,7 +38,8 @@
     {
       "name": "Master_FeatherUnitTests",
       "featherBranch": "master",
-      "emails": "tihomir.petrov@telerik.com"
+      "emails": "tihomir.petrov@telerik.com",
+      "mandatory": true
     }
   ],
   "widgetUnitJobs":
@@ -51,7 +54,8 @@
       "name": "Master_FeatherWidgetsUnitTests",
       "description": "The Frontend Widgets for the Sitefinity Feather project.",
       "featherBranch": "master",
-      "emails": "tihomir.petrov@telerik.com"
+      "emails": "tihomir.petrov@telerik.com",
+      "mandatory": true
     }
   ],
   "mvcUnitJobs":
@@ -62,7 +66,8 @@
     },
     {
       "name": "Master_Telerik.Sitefinity.Mvc_UnitTests",
-      "featherBranch": "master"
+      "featherBranch": "master",
+      "mandatory": true
     }
   ],
   "integrationJobs":
@@ -76,7 +81,8 @@
       "sslEnabled": true,
       "readOnlyMode": false,
       "emails": "tihomir.petrov@telerik.com",
-      "cronExpression": "H 22 * * 1-5"
+      "cronExpression": "H 22 * * 1-5",
+      "mandatory": true
     },
     {
       "name": "Codebase_FeatherIntegrationTests_ReadOnly",
@@ -122,7 +128,8 @@
       "category": "Forms,Blogs,ContentBlock,Navigation,News,SearchResults,Media,Identity,InlineClientAssets,Samples,Common,Packaging,Events,Taxonomies",
       "sslEnabled": true,
       "readOnlyMode": false,
-      "cronExpression": "H 21 * * 1-5"
+      "cronExpression": "H 21 * * 1-5",
+      "mandatory": true
     },
     {
       "name": "Codebase_FeatherWidgets_DynamicModules_IntegrationTests",
@@ -191,7 +198,8 @@
       "sslEnabled": true,
       "readOnlyMode": false,
       "buildAfterProject": "CodeBase_Telerik.Sitefinity.Mvc_UnitTests",
-      "cronExpression": "H 21 * * 1-5"
+      "cronExpression": "H 21 * * 1-5",
+      "mandatory": true
     },
     {
       "name": "Internal_Master_Telerik.Sitefinity.Mvc_IntegrationTests",
@@ -227,7 +235,8 @@
       "readOnlyMode": false,
       "rerunFailedUITests": true,
       "command": ".\\Tooling\\Feather\\UITests\\SitefinityMvc.ps1",
-      "cronExpression": "H 02 * * 1-5"
+      "cronExpression": "H 02 * * 1-5",
+      "mandatory": true
     },
     {
       "name": "Master_Telerik.Sitefinity.Mvc_UITests",
@@ -255,7 +264,8 @@
       "rerunFailedUITests": true,
       "command": ".\\Tooling\\Feather\\UITests\\Feather.ps1",
       "emails": "tihomir.petrov@telerik.com",
-      "cronExpression": "H 02 * * 1-5"
+      "cronExpression": "H 02 * * 1-5",
+      "mandatory": true
     },
     {
       "name": "Codebase_FeatherWidgetsUITests_ContentBlock",

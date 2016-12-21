@@ -20,6 +20,7 @@ class MvcIntegrationTestJob {
   String emails
   String gitProjectUrl
   String cronExpression
+  Boolean mandatory
 
   String command = ".\\Tooling\\Feather\\IntegrationTests\\SitefinityMvc.ps1"
   String branchParameter = '$Branch'
@@ -35,7 +36,8 @@ class MvcIntegrationTestJob {
       category: this.category,
       sslEnabled: this.sslEnabled,
       readOnlyMode: this.readOnlyMode,
-      cronExpression: this.cronExpression
+      cronExpression: this.cronExpression,
+      mandatory: this.mandatory
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)

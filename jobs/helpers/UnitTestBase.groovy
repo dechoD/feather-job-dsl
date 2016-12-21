@@ -12,13 +12,15 @@ class UnitTestBase {
   String emails
   String cronExpression
   String branchParameter
+  Boolean mandatory
 
   Job build(DslFactory factory) {
     Job baseJob = new BaseJobBuilder(
       name: this.name,
       description: this.description,
       emails: this.emails,
-      cronExpression: this.cronExpression
+      cronExpression: this.cronExpression,
+      mandatory: this.mandatory
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)

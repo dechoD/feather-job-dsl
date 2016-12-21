@@ -20,6 +20,7 @@ class MvcUiTestJob {
   String command
   String emails
   String cronExpression
+  Boolean mandatory
 
   Job build(DslFactory factory) {
     Job baseJob = new UiTestBase(
@@ -34,7 +35,8 @@ class MvcUiTestJob {
       enableMultisite: this.enableMultisite,
       readOnlyMode: this.readOnlyMode,
       rerunFailedUITests: this.rerunFailedUITests,
-      command: this.command
+      command: this.command,
+      mandatory: this.mandatory
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)

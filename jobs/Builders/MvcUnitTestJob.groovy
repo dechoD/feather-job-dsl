@@ -13,6 +13,7 @@ class MvcUnitTestJob {
   String emails
   String featherBranch
   String cronExpression
+  Boolean mandatory
 
   Job build(DslFactory factory) {
     Job baseJob = new UnitTestBase(
@@ -20,7 +21,8 @@ class MvcUnitTestJob {
       description: this.description,
       branchParameter: this.featherBranch,
       emails: this.emails,
-      cronExpression: this.cronExpression
+      cronExpression: this.cronExpression,
+      mandatory: this.mandatory
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)

@@ -9,7 +9,8 @@ jobs.clientJobs.each {
     description: it.description,
     featherBranch: it.featherBranch,
     emails: it.emails,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
 }
 
 jobs.clientWidgetJobs.each {
@@ -18,7 +19,8 @@ jobs.clientWidgetJobs.each {
     description: it.description,
     featherBranch: it.featherBranch,
     emails: it.emails,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
 }
 
 jobs.unitJobs.each {
@@ -27,7 +29,8 @@ jobs.unitJobs.each {
     description: it.description,
     featherBranch: it.featherBranch,
     emails: it.emails,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
 }
 
 jobs.widgetUnitJobs.each {
@@ -37,7 +40,8 @@ jobs.widgetUnitJobs.each {
     featherBranch: it.featherBranch,
     emails: it.emails,
     downstreamProject: it.downstreamProject,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
 }
 
 jobs.mvcUnitJobs.each {
@@ -46,7 +50,8 @@ jobs.mvcUnitJobs.each {
     description: it.description,
     featherBranch: it.featherBranch,
     emails: it.emails,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
 }
 
 jobs.uiJobs.each {
@@ -62,7 +67,8 @@ jobs.uiJobs.each {
     rerunFailedUITests: it.rerunFailedUITests,
     command: it.command,
     emails: it.emails,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
 }
 
 jobs.mvcUiJobs.each {
@@ -78,7 +84,8 @@ jobs.mvcUiJobs.each {
     rerunFailedUITests: it.rerunFailedUITests,
     command: it.command,
     emails: it.emails,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
   }
 
 jobs.integrationJobs.each {
@@ -93,7 +100,8 @@ jobs.integrationJobs.each {
     readOnlyMode: it.readOnlyMode,
     gitProjectUrl: it.gitProjectUrl,
     emails: it.emails,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
 }
 
 jobs.widgetIntegrationJobs.each {
@@ -107,7 +115,8 @@ jobs.widgetIntegrationJobs.each {
     sslEnabled: it.sslEnabled,
     readOnlyMode: it.readOnlyMode,
     emails: it.emails,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
 }
 
 jobs.mvcIntegrationJobs.each {
@@ -124,7 +133,8 @@ jobs.mvcIntegrationJobs.each {
     buildAfterProject: it.buildAfterProject,
     buildWhenChangeIsPushed: it.buildWhenChangeIsPushed,
     emails: it.emails,
-    cronExpression: it.cronExpression).build(this)
+    cronExpression: it.cronExpression,
+    mandatory: it.mandatory).build(this)
 }
 
 new CleanUiMachines().build(this)

@@ -29,13 +29,13 @@ class JobBuilder {
   JobBuilder SetUiTestParameters(String branch, String sitefinityPackage, String category, Boolean sslEnabled, Boolean enableMultisite, Boolean readOnlyMode, Boolean rerunFailedUITests) {
     job.with {
       parameters {
-        stringParam("Branch", branch)
-        stringParam("SitefinityPackage", sitefinityPackage)
-        stringParam("Category", category)
-        booleanParam("SslEnabled", sslEnabled)
-        booleanParam("EnableMultisite", enableMultisite)
-        booleanParam("ReadOnlyMode", readOnlyMode)
-        booleanParam("RerunFailedUITests", rerunFailedUITests)
+        stringParam("Branch", branch, '')
+        stringParam("SitefinityPackage", sitefinityPackage, '')
+        stringParam("Category", category, '')
+        booleanParam("SslEnabled", sslEnabled, '')
+        booleanParam("EnableMultisite", enableMultisite, '')
+        booleanParam("ReadOnlyMode", readOnlyMode, '')
+        booleanParam("RerunFailedUITests", rerunFailedUITests, '')
       }
     }
 
@@ -45,12 +45,12 @@ class JobBuilder {
   JobBuilder SetIntegrationTestParameters(String branch, String sitefinityPackage, String testRunnerPackage, String category, Boolean sslEnabled, Boolean readOnlyMode) {
     job.with {
       parameters {
-        stringParam("Branch", branch)
-        stringParam("SitefinityPackage", sitefinityPackage)
-        stringParam("TestRunnerPackage", testRunnerPackage)
-        stringParam("Categories", category)
-        booleanParam("SslEnabled", sslEnabled)
-        booleanParam("ReadOnlyMode", readOnlyMode)
+        stringParam("Branch", branch, '')
+        stringParam("SitefinityPackage", sitefinityPackage, '')
+        stringParam("TestRunnerPackage", testRunnerPackage, '')
+        stringParam("Categories", category, '')
+        booleanParam("SslEnabled", sslEnabled, '')
+        booleanParam("ReadOnlyMode", readOnlyMode, '')
       }
     }
 
@@ -68,7 +68,7 @@ class JobBuilder {
   JobBuilder SetUnitTestParameters(String branch) {
     job.with {
       parameters {
-        stringParam("Branch", branch)
+        stringParam("Branch", branch, '')
       }
     }
 

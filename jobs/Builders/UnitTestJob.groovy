@@ -13,6 +13,7 @@ class UnitTestJob {
   String emails
   String featherBranch
   String cronExpression
+  Boolean mandatory
 
   String testFiles = 'Tests\\Telerik.Sitefinity.Frontend.TestUnit\\bin\\Release\\Telerik.Sitefinity.Frontend.TestUnit.dll'
 
@@ -22,7 +23,8 @@ class UnitTestJob {
       description: this.description,
       branchParameter: this.featherBranch,
       emails: this.emails,
-      cronExpression: this.cronExpression
+      cronExpression: this.cronExpression,
+      mandatory: this.mandatory
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)

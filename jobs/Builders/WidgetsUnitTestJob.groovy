@@ -14,6 +14,7 @@ class WidgetsUnitTestJob {
   String featherBranch
   String cronExpression
   String downstreamProject
+  Boolean mandatory
 
   Job build(DslFactory factory) {
     Job baseJob = new UnitTestBase(
@@ -21,7 +22,8 @@ class WidgetsUnitTestJob {
       description: this.description,
       branchParameter: this.featherBranch,
       emails: this.emails,
-      cronExpression: this.cronExpression
+      cronExpression: this.cronExpression,
+      mandatory: this.mandatory
       ).build(factory)
 
       def jobBuilder = new JobBuilder(baseJob)

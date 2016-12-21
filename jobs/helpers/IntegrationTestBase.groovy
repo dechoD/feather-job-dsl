@@ -18,13 +18,15 @@ class IntegrationTestBase {
   String emails
   String gitProjectUrl
   String cronExpression
+  Boolean mandatory
 
   Job build(DslFactory factory) {
     Job baseJob = new BaseJobBuilder(
       name: this.name,
       description: this.description,
       emails: this.emails,
-      cronExpression: this.cronExpression
+      cronExpression: this.cronExpression,
+      mandatory: this.mandatory
       ).build(factory)
 
       if (this.testRunnerPackage == null) {
